@@ -1,23 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
 	public float speed;
-
+    private Transform playerPos;
 	private Rigidbody2D rb2d;
+    public GameObject bulletPrefab;
 
+    public int HP = 5;
 
 	// Use this for initialization
 	void Start() {
-
-		rb2d = GetComponent<Rigidbody2D> ();
+        playerPos = GetComponent<Transform>();
+		rb2d = GetComponent<Rigidbody2D>();
 	}
 
 	// Update is called once per frame
 	void Update () {
+        if(HP <= 0)
+        {
+            Destroy(GameObject.Find("Player"));
+            SceneManager.LoadScene("TestScene");
+        }
 
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            var bulletInstance = Instantiate(bulletPrefab, new Vector3(playerPos.position.x, playerPos.position.y + playerPos.localScale.y), playerPos.rotation);
+        }
 	}
 
 	void FixedUpdate() {
@@ -33,4 +45,10 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
+    void DamageTaken(int amount)
+    {
+        Debug.Log("DamageTaken Invoked");
+        HP -= amount;
+        Debug.Log(HP);
+    }
 }
