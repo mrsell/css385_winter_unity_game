@@ -7,11 +7,20 @@ public class StageController : MonoBehaviour {
     public float scrollMoveDelay; // delay in seconds
     public float scrollSpeed;
 
+    // components
+    private SpriteRenderer spriteRenderer;
+    private Camera camera;
+
     private float totalScrollDistance; // total distance to move down
     private float currentScrollDistance = 0f;
     private bool scrollSet = false;
     private float timer = 0f; // time from start in seconds
     private bool timerSet = true;
+
+    void InitializeComponents() {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        camera = Camera.main;
+    }
 
     void handleTimer() {
         timer += Time.deltaTime;
@@ -23,11 +32,13 @@ public class StageController : MonoBehaviour {
     }
 
     void Start() {
+        InitializeComponents();
         // get height of renderer to initialize total scroll distance
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        float stageHeight = sr.bounds.size.y;
+        float stageHeight = spriteRenderer.bounds.size.y;
+        // get orthographic size of camera
+        float diff = camera.orthographicSize;
         // initialize total scroll distance
-        totalScrollDistance = stageHeight * 4 / 5;
+        totalScrollDistance = stageHeight - (2 * diff);
     }
     
     void Update() {
