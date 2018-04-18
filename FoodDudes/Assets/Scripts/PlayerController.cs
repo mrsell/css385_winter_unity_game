@@ -5,50 +5,52 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
-	public float speed;
+    public float speed = 5; // player movement speed
+    public int healthPoints = 5; // health points
+    public GameObject bulletPrefab; // shot type
+
     private Transform playerPos;
-	private Rigidbody2D rb2d;
-    public GameObject bulletPrefab;
+    private Rigidbody2D rb2d;
 
-    public int HP = 5;
-
-	// Use this for initialization
-	void Start() {
+    void Start() {
         playerPos = GetComponent<Transform>();
-		rb2d = GetComponent<Rigidbody2D>();
-	}
+        rb2d = GetComponent<Rigidbody2D>();
+    }
 
-	// Update is called once per frame
-	void Update () {
-        if(HP <= 0)
-        {
+    void Update() {
+        // destroy player and reload scene if HP is at or below 0
+        if (healthPoints <= 0) {
             Destroy(GameObject.Find("Player"));
             SceneManager.LoadScene("TestScene");
         }
-
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            var bulletInstance = Instantiate(bulletPrefab, new Vector3(playerPos.position.x, playerPos.position.y + playerPos.localScale.y), playerPos.rotation);
+        // fire shots on spacebar down
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            var bulletInstance = Instantiate(
+                bulletPrefab,
+                new Vector3(
+                    playerPos.position.x,
+                    playerPos.position.y + playerPos.localScale.y
+                ),
+                playerPos.rotation
+            );
         }
-	}
+    }
 
-	void FixedUpdate() {
+    void FixedUpdate() {
+        // get movement input from user
+        float moveHorizontal = Input.GetAxis ("Horizontal");
+        float moveVertical = Input.GetAxis ("Vertical");
 
-		// get movement requests from user
-		float moveHorizontal = Input.GetAxis ("Horizontal");
-		float moveVertical = Input.GetAxis ("Vertical");
+        //Vector2 movement = new Vector2 (moveHorizonal, moveVertical);
 
-		//Vector2 movement = new Vector2 (moveHorizonal, moveVertical);
+        // update velocity
+        rb2d.velocity = new Vector2(moveHorizontal, moveVertical);
+        rb2d.velocity *= speed;
+    }
 
-		rb2d.velocity = new Vector2(moveHorizontal, moveVertical);
-		rb2d.velocity *= speed;
-
-	}
-
-    void DamageTaken(int amount)
-    {
-        Debug.Log("DamageTaken Invoked");
-        HP -= amount;
-        Debug.Log(HP);
+    void TakeDamage(int amount) {
+        Debug.Log("TakeDamage invoked");
+        healthPoints -= amount;
+        Debug.Log(healthPoints);
     }
 }

@@ -3,62 +3,57 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerBullet : MonoBehaviour
-{
-    private bool isAlive = true;
+public class PlayerBullet : MonoBehaviour {
+
+    const float offScreenError = 0.01f;
+    
     public float speed;
     public int damage = 1;
-    const float k_OffScreenError = 0.01f;
 
-    void Start()
-    {
+    private bool isAlive = true;
+
+    void Start() {
         Rigidbody2D rg = GetComponent<Rigidbody2D>();
         rg.velocity = transform.up * speed;
     }
 
-    private void Update()
-    {
-        if(!isAlive)
-        {
+    private void Update() {
+        if (!isAlive) {
             Remove();
         }
     }
 
-    private void FixedUpdate()
-    {
-        Vector3 screenPoint = Camera.main.WorldToViewportPoint(transform.position);
-        bool onScreen = screenPoint.z > 0 && screenPoint.x > -k_OffScreenError &&
-                        screenPoint.x < 1 + k_OffScreenError && screenPoint.y > -k_OffScreenError &&
-                        screenPoint.y < 1 + k_OffScreenError;
-        if (!onScreen)
-        {
+    private void FixedUpdate() {
+        Vector3 screenPoint = Camera.main.WorldToViewportPoint(
+            transform.position);
+        bool onScreen = screenPoint.z > 0 &&
+            screenPoint.x > -offScreenError &&
+            screenPoint.x < 1 + offScreenError &&
+            screenPoint.y > -offScreenError &&
+            screenPoint.y < 1 + offScreenError;
+        if (!onScreen) {
             isAlive = false;
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Enemy") {
             collision.gameObject.SendMessage("DamageTaken", damage);
             isAlive = false;
             Debug.Log("removed by dealing damage to an enemy");
         }
-        else if (collision.gameObject.tag == "Player")
-        {
+        else if (collision.gameObject.tag == "Player") {
             collision.gameObject.SendMessage("DamageTaken", damage);
             isAlive = false;
             Debug.Log("removed by dealing damage to a player");
         }
-        else
-        {
+        else {
             isAlive = false;
             Debug.Log("collision by a random " + collision.gameObject.tag);
         }
     }
 
-    public void Remove()
-    {
+    public void Remove() {
         Destroy(this.gameObject);
     }
 }
