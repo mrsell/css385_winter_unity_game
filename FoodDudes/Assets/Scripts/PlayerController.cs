@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
 
     public float speed = 5; // player movement speed
     public int healthPoints = 5; // health points
-    public GameObject bulletPrefab; // shot type
+    public GameObject bulletType; // shot type
 
     private Transform playerPos;
     private Rigidbody2D rb2d;
@@ -25,14 +25,19 @@ public class PlayerController : MonoBehaviour {
         }
         // fire shots on spacebar down
         if (Input.GetKeyDown(KeyCode.Space)) {
-            Instantiate(
-                bulletPrefab,
-                new Vector3(
-                    playerPos.position.x,
-                    playerPos.position.y + playerPos.localScale.y
-                ),
-                playerPos.rotation
+            // create bullet at pos relative to self
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            Vector3 shotPos = new Vector3(
+                transform.position.x,
+                transform.position.y + spriteRenderer.bounds.extents.y,
+                transform.position.z
             );
+            GameObject bullet = Instantiate(bulletType);
+            Transform bulletTransform = bullet.GetComponent<Transform>();
+            bulletTransform.position = shotPos;
+            // set bullet velocity
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            rb.velocity = new Vector2(0f, 8f);
         }
     }
 
