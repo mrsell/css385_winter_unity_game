@@ -9,7 +9,6 @@ public class StageController : MonoBehaviour {
 
     // components
     private SpriteRenderer spriteRenderer;
-    private Camera camera;
 
     private float totalScrollDistance; // total distance to move down
     private float currentScrollDistance = 0f;
@@ -19,7 +18,6 @@ public class StageController : MonoBehaviour {
 
     void InitializeComponents() {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        camera = Camera.main;
     }
 
     void handleTimer() {
@@ -36,7 +34,7 @@ public class StageController : MonoBehaviour {
         // get height of renderer to initialize total scroll distance
         float stageHeight = spriteRenderer.bounds.size.y;
         // get orthographic size of camera
-        float diff = camera.orthographicSize;
+        float diff = Camera.main.orthographicSize;
         // initialize total scroll distance
         totalScrollDistance = stageHeight - (2 * diff);
     }

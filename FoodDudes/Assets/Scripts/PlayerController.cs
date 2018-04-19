@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour {
         }
         // fire shots on spacebar down
         if (Input.GetKeyDown(KeyCode.Space)) {
-            var bulletInstance = Instantiate(
+            Instantiate(
                 bulletPrefab,
                 new Vector3(
                     playerPos.position.x,
