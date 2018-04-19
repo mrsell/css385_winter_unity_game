@@ -53,4 +53,12 @@ public class PlayerController : MonoBehaviour {
         healthPoints -= amount;
         Debug.Log(healthPoints);
     }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        // if hit by enemy bullet, take damage and destroy bullet
+        if (other.gameObject.CompareTag("EnemyBullet")) {
+            TakeDamage(1);
+            Destroy(other.gameObject);
+        }
+    }
 }

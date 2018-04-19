@@ -10,11 +10,6 @@ public class EnemyController : MonoBehaviour {
 
     private float timer = 0f;
     private bool shotSet = true;
-    private List<GameObject> bullets;
-
-    void Start() {
-        bullets = new List<GameObject>();
-    }
 
     void Update() {
         // update timer
@@ -36,18 +31,6 @@ public class EnemyController : MonoBehaviour {
             // set bullet velocity
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.velocity = new Vector2(0f, -.05f);
-            // add bullet to array
-            bullets.Add(bullet);
-        }
-        // if any bullet has gone out of bounds, destroy it
-        for (int i = 0; i < bullets.Count; i++) {
-            if (bullets[i].transform.position.y <= 
-                (Camera.main.transform.position.y -
-                Camera.main.orthographicSize)) {
-                GameObject bullet = bullets[i];
-                bullets.RemoveAt(i);
-                Destroy(bullet);
-            }
         }
     }
 }
