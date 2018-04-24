@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletType: {fileID: 1677082116462872, guid: 3a240490b712744e1b0e681ec554d02e, type: 2}
-  shotInterval: 0.5
+  shotInterval: 1
   healthPoints: 10
   direction: left
   speed: 0.05
