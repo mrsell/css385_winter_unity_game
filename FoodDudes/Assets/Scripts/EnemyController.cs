@@ -10,6 +10,8 @@ public class EnemyController : MonoBehaviour {
     public string direction = "left";
     public float speed = .05f;
     public int ammo = 20;
+    public int scoreOnKill = 500;
+    
 
     private float timer = 0f;
     private bool shotSet = true;
@@ -45,6 +47,7 @@ public class EnemyController : MonoBehaviour {
             Destroy(other.gameObject);
             // if health has reached 0, set to leaving state
             if (healthPoints <= 0) {
+                Score.score += scoreOnKill;
                 movingToPosition = false;
                 leaving = true;
             }
