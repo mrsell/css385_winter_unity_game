@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 8
+  serializedVersion: 9
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -39,6 +39,7 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -54,11 +55,10 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 9
+    serializedVersion: 10
     m_Resolution: 2
     m_BakeResolution: 40
-    m_TextureWidth: 1024
-    m_TextureHeight: 1024
+    m_AtlasSize: 1024
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -427,6 +427,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -1074,11 +1075,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerPosY: 4
   enemyType: {fileID: 1552057664517576, guid: 8d0d0c1d7a2b6415b829c385d771d117, type: 2}
-  enemySpeed: 0.1
   numEnemiesToSpawn: 7
-  spawnDirection: right
-  ammo: 150
   spawnInterval: 0.3
+  maxDistance: 6
+  enemyDirection: right
+  enemySpeed: 0.3
+  enemyPointValue: 1250
+  enemyBulletType: {fileID: 1677082116462872, guid: 3a240490b712744e1b0e681ec554d02e,
+    type: 2}
+  enemyShotInterval: 0.5
+  ammo: 150
 --- !u!212 &431117391
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1092,6 +1098,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -1286,7 +1293,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000029249117, y: -210.1}
+  m_AnchoredPosition: {x: 0.000029249117, y: -210.10002}
   m_SizeDelta: {x: 0, y: -421.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &485593518
@@ -1358,7 +1365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 190, y: -8.700001}
+  m_AnchoredPosition: {x: 190, y: -8.700016}
   m_SizeDelta: {x: -599.6, y: -0.00000047683716}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &569290590
@@ -1827,11 +1834,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerPosY: 4
   enemyType: {fileID: 1552057664517576, guid: 8d0d0c1d7a2b6415b829c385d771d117, type: 2}
-  enemySpeed: 0.1
-  numEnemiesToSpawn: 3
-  spawnDirection: left
-  ammo: 30
+  numEnemiesToSpawn: 5
   spawnInterval: 0.5
+  maxDistance: 5
+  enemyDirection: left
+  enemySpeed: 0.1
+  enemyPointValue: 500
+  enemyBulletType: {fileID: 1677082116462872, guid: 3a240490b712744e1b0e681ec554d02e,
+    type: 2}
+  enemyShotInterval: 1
+  ammo: 30
 --- !u!212 &914524391
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1845,6 +1857,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -2644,11 +2657,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerPosY: 4
   enemyType: {fileID: 1552057664517576, guid: 8d0d0c1d7a2b6415b829c385d771d117, type: 2}
-  enemySpeed: 0.1
   numEnemiesToSpawn: 5
-  spawnDirection: left
+  spawnInterval: 1
+  maxDistance: 8
+  enemyDirection: left
+  enemySpeed: 0.2
+  enemyPointValue: 1000
+  enemyBulletType: {fileID: 1677082116462872, guid: 3a240490b712744e1b0e681ec554d02e,
+    type: 2}
+  enemyShotInterval: 0.5
   ammo: 100
-  spawnInterval: 0.5
 --- !u!212 &1449031666
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2662,6 +2680,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -2958,6 +2977,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -3167,7 +3187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 450.87, y: -8.700035}
+  m_AnchoredPosition: {x: 450.87, y: -8.700012}
   m_SizeDelta: {x: -898.97, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1712799572
@@ -3489,7 +3509,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -261.59998, y: -8.700001}
+  m_AnchoredPosition: {x: -261.59998, y: -8.700016}
   m_SizeDelta: {x: -500, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1998978823
@@ -3568,11 +3588,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerPosY: 4
   enemyType: {fileID: 1552057664517576, guid: 8d0d0c1d7a2b6415b829c385d771d117, type: 2}
-  enemySpeed: 0.1
   numEnemiesToSpawn: 3
-  spawnDirection: right
+  spawnInterval: 0.2
+  maxDistance: 8
+  enemyDirection: right
+  enemySpeed: 0.15
+  enemyPointValue: 750
+  enemyBulletType: {fileID: 1677082116462872, guid: 3a240490b712744e1b0e681ec554d02e,
+    type: 2}
+  enemyShotInterval: 0.7
   ammo: 50
-  spawnInterval: 0.5
 --- !u!212 &2012087059
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3586,6 +3611,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:

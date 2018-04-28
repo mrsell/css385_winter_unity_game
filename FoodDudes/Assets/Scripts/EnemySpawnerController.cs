@@ -6,45 +6,45 @@ using UnityEngine;
 public class EnemySpawnerController : MonoBehaviour {
 
     public float triggerPosY = 4f; // y coord to trigger action
-    public GameObject enemyType;
-    public float enemySpeed = .1f;
+    public GameObject enemyType; // type of enemy to spawn
     public int numEnemiesToSpawn = 4;
-    public string spawnDirection = "left";
-    public int ammo = 20;
     public float spawnInterval = .5f; // time between each enemy spawn
+    public float maxDistance = 5f; // distance first enemy will travel
+    public string enemyDirection = "left";
+    public float enemySpeed = .1f;
+    public int enemyPointValue = 500;
+    public GameObject enemyBulletType;
+    public float enemyShotInterval = .5f;
+    public int ammo = 20;
     
     private float timer = 0f; // interval timer
     private bool spawnSet = false;
     private int numEnemiesSpawned = 0;
-    private float currentStopPosX = 0;
-    private float enemyPositionInterval;
+    private float enemyDistance = 5f;
+    private float distanceInterval = 0f;
 
     void Start() {
-        // set the stop positions so that the enemies will be
+        // set the distance interval so that the enemies will be
         // equidistant from each other between X coords 0 and
         // transform.position.x
-        enemyPositionInterval = Math.Abs(transform.position.x /
-            numEnemiesToSpawn);
+        distanceInterval = maxDistance / numEnemiesToSpawn;
+        // set enemy distance
+        enemyDistance = maxDistance;
     }
 
-    void SpawnEnemy(GameObject enemyType) {
+    void SpawnEnemy() {
         GameObject enemy = Instantiate(enemyType, transform);
-        // set stop position for enemy
+        // set enemy data
         EnemyController enemyScript = enemy.GetComponent<EnemyController>();
-        enemyScript.SetStopPosX(currentStopPosX);
-        // set direction
-        enemyScript.direction = spawnDirection;
-        // set speed
+        enemyScript.direction = enemyDirection;
         enemyScript.speed = enemySpeed;
-        // set ammo
+        enemyScript.totalDistance = enemyDistance;
+        enemyScript.pointValue = enemyPointValue;
+        enemyScript.bulletType = enemyBulletType;
+        enemyScript.shotInterval = enemyShotInterval;
         enemyScript.ammo = ammo;
-        // update stop pos
-        if (spawnDirection == "left") {
-            currentStopPosX += enemyPositionInterval;
-        }
-        else if (spawnDirection == "right") {
-            currentStopPosX -= enemyPositionInterval;
-        }
+        // update distance
+        enemyDistance -= distanceInterval;
         // increment num of enemies spawned
         numEnemiesSpawned++;
     }
@@ -59,7 +59,7 @@ public class EnemySpawnerController : MonoBehaviour {
             timer += Time.deltaTime;
             if (timer >= spawnInterval) {
                 timer = 0f;
-                SpawnEnemy(enemyType);
+                SpawnEnemy();
             }
         }
     }
