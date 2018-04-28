@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4286820368827038}
   - component: {fileID: 114658135831297294}
+  - component: {fileID: 114810269507228968}
   - component: {fileID: 212369092720425814}
   - component: {fileID: 61294429772361842}
   m_Layer: 0
@@ -78,12 +79,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4404f46c1069a4685bf700188e3ac5fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletType: {fileID: 1677082116462872, guid: 3a240490b712744e1b0e681ec554d02e, type: 2}
-  shotInterval: 1
   healthPoints: 10
   direction: left
   speed: 0.05
+  totalDistance: 5
+  pointValue: 500
+  bulletType: {fileID: 1677082116462872, guid: 3a240490b712744e1b0e681ec554d02e, type: 2}
+  shotInterval: 1
   ammo: 20
+--- !u!114 &114810269507228968
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1552057664517576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c19674eecbb5440ecaee313519740d46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212369092720425814
 SpriteRenderer:
   m_ObjectHideFlags: 1

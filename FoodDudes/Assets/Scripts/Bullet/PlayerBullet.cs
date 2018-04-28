@@ -11,6 +11,8 @@ public class PlayerBullet : MonoBehaviour {
     public int damage = 1;
 
     private bool isAlive = true;
+    private float timer = 0f;
+    private float timerInterval = 1f;
 
     void Start() {
         Rigidbody2D rg = GetComponent<Rigidbody2D>();

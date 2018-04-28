@@ -30,36 +30,6 @@ public class EnemyController : MonoBehaviour {
         InitializeComponents();
     }
 
-    bool OutOfCameraBounds(Camera camera) {
-        // enemy data
-        Vector3 pos = transform.position;
-        Vector2 size = boxCollider.size;
-        // camera data
-        Vector3 cameraPos = camera.transform.position;
-        float cameraWidth = camera.orthographicSize * camera.aspect * 2;
-        float cameraHeight = camera.orthographicSize * 2;
-        // check left bound
-        if (pos.x - (size.x / 2) <= cameraPos.x - (cameraWidth / 2)) {
-            return true;
-        }
-        // check right bound
-        else if (pos.x + (size.x / 2) >= cameraPos.x + (cameraWidth / 2)) {
-            return true;
-        }
-        // check top bound
-        else if (pos.y + (size.y / 2) >= cameraPos.y + (cameraHeight / 2)) {
-            return true;
-        }
-        // check bottom bound
-        else if (pos.y - (size.y / 2) <= cameraPos.y - (cameraHeight / 2)) {
-            return true;
-        }
-        // else inside camera bounds
-        else {
-            return false;
-        }
-    }
-
     void FireShot() {
         // create bullet at pos relative to self
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
@@ -142,10 +112,6 @@ public class EnemyController : MonoBehaviour {
                         transform.position.z
                     );
                     break;
-            }
-            // destroy self if out of camera bounds
-            if (OutOfCameraBounds(Camera.main)) {
-                Destroy(gameObject);
             }
         }
         else {

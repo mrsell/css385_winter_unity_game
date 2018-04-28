@@ -10,7 +10,19 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class OutOfBoundsDestroyer : MonoBehaviour {
 
+    private float timer = 0f;
+    private float timerInterval = 1f;
+
     void Update() {
+        // periodically check for out of bounds
+        timer += Time.deltaTime;
+        if (timer >= timerInterval) {
+            timer = 0f;
+            DestroyIfOutOfBounds();
+        }
+    }
+    
+    public void DestroyIfOutOfBounds() {
         // enemy data
         Vector3 pos = transform.position;
         Vector2 size = GetComponent<BoxCollider2D>().size;
