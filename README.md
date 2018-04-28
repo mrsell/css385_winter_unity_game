@@ -1,2 +1,2 @@
-# css385_winter_unity_game
-Final game project for UWB CSS385, Winter quarter
+# Food Dude
+Final game project for UWB CSS 385, Spring quarter
