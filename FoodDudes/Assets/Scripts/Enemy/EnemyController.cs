@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour {
     public int healthPoints = 10; // how much health this enemy has
     public string direction = "left"; // direction to move
     public float speed = .05f; // movement speed
+    public float shotSpeed = 5.0f;
     public float totalDistance = 5f; // total distance to travel
     public int pointValue = 500; // points gained on defeat
     public GameObject bulletType; // type of shot to fire
@@ -44,12 +45,16 @@ public class EnemyController : MonoBehaviour {
         GameObject bullet = Instantiate(bulletType);
         Transform bulletTransform = bullet.GetComponent<Transform>();
         bulletTransform.position = shotPos;
-        bullet.GetComponent<HomingBulletController>().Fly();
-        /*
-        // set bullet velocity
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(0f, -4f);
-        */
+		// set direction of movement towards player
+        GameObject player = GameObject.Find("Player");
+        Vector2 bulletPos = bulletTransform.position;
+        Vector2 playerPos = player.transform.position;
+        Vector2 direction = playerPos - bulletPos;
+        Vector2 movement = direction.normalized * shotSpeed;
+		// apply the movement
+        Rigidbody2D rigidbody = bullet.GetComponent<Rigidbody2D>();
+		//rigidbody.velocity = direction.normalized * speed;
+        rigidbody.velocity = movement;
         // reduce ammo
         ammo--;
     }

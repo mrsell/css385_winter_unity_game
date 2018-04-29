@@ -12,6 +12,7 @@ public class EnemyLineSpawnerController : MonoBehaviour {
     public float maxDistance = 5f; // distance first enemy will travel
     public string enemyDirection = "left";
     public float enemySpeed = .1f;
+    public float enemyShotSpeed = 5.0f;
     public int enemyPointValue = 500;
     public GameObject enemyBulletType;
     public float enemyShotInterval = .5f;
@@ -39,6 +40,7 @@ public class EnemyLineSpawnerController : MonoBehaviour {
         enemyScript.parentSpawner = gameObject;
         enemyScript.direction = enemyDirection;
         enemyScript.speed = enemySpeed;
+        enemyScript.shotSpeed = enemyShotSpeed;
         enemyScript.totalDistance = enemyDistance;
         enemyScript.pointValue = enemyPointValue;
         enemyScript.bulletType = enemyBulletType;
