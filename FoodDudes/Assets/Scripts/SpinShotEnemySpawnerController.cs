@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpreadShotEnemySpawnerController : MonoBehaviour {
+public class SpinShotEnemySpawnerController : MonoBehaviour {
 
     public float triggerPosY = 4f; // y coord to trigger action
     public GameObject enemyType; // type of enemy to spawn
@@ -12,12 +12,11 @@ public class SpreadShotEnemySpawnerController : MonoBehaviour {
     public float maxDistance = 5f; // distance first enemy will travel
     public string enemyDirection = "left";
     public float enemySpeed = .1f;
-    public float enemyShotSpeed = 2.0f;
+    public float enemyShotSpeed = 5.0f;
     public int enemyPointValue = 500;
     public GameObject enemyBulletType;
-    public float enemyShotInterval = .5f;
+    public float enemyShotInterval = .05f;
     public int ammo = 20;
-    public float enemySpread = 5.0f;
     
     private float timer = 0f; // interval timer
     private bool spawnSet = false;
@@ -37,8 +36,7 @@ public class SpreadShotEnemySpawnerController : MonoBehaviour {
     void SpawnEnemy() {
         GameObject enemy = Instantiate(enemyType, transform);
         // set enemy data
-        SpreadShotEnemyController enemyScript = enemy.GetComponent<SpreadShotEnemyController>();
-        Debug.Log(gameObject);
+        SpinShotEnemyController enemyScript = enemy.GetComponent<SpinShotEnemyController>();
         enemyScript.parentSpawner = gameObject;
         enemyScript.direction = enemyDirection;
         enemyScript.speed = enemySpeed;
@@ -48,12 +46,10 @@ public class SpreadShotEnemySpawnerController : MonoBehaviour {
         enemyScript.bulletType = enemyBulletType;
         enemyScript.shotInterval = enemyShotInterval;
         enemyScript.ammo = ammo;
-        enemyScript.spread = enemySpread;
         // update distance
         enemyDistance -= distanceInterval;
         // increment num of enemies spawned
         numEnemiesSpawned++;
-        Debug.Log(numEnemiesSpawned);
     }
 
     void Update() {

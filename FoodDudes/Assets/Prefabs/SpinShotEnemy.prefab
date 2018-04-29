@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 114810269507228968}
   - component: {fileID: 212369092720425814}
   - component: {fileID: 61294429772361842}
-  - component: {fileID: 114280496597084754}
+  - component: {fileID: 114092108856044840}
   m_Layer: 0
-  m_Name: SpreadShotEnemy
+  m_Name: SpinShotEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.08, y: 0.1}
   m_EdgeRadius: 0
---- !u!114 &114280496597084754
+--- !u!114 &114092108856044840
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -76,20 +76,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1552057664517576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f0d63d7d8cfe47c9b6ba8c48cab89c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 7bcb5098f4f9d4ff9bb73aaa8023b84f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentSpawner: {fileID: 0}
-  healthPoints: 25
+  healthPoints: 50
   direction: left
   speed: 0.05
   shotSpeed: 2
   totalDistance: 5
   pointValue: 500
   bulletType: {fileID: 1677082116462872, guid: 3a240490b712744e1b0e681ec554d02e, type: 2}
-  shotInterval: 0.5
+  shotInterval: 0.05
   ammo: 20
-  spread: 5
 --- !u!114 &114810269507228968
 MonoBehaviour:
   m_ObjectHideFlags: 1
