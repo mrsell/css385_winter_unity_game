@@ -41,9 +41,12 @@ public class EnemyController : MonoBehaviour {
         GameObject bullet = Instantiate(bulletType);
         Transform bulletTransform = bullet.GetComponent<Transform>();
         bulletTransform.position = shotPos;
+        bullet.GetComponent<HomingBulletController>().Fly();
+        /*
         // set bullet velocity
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(0f, -4f);
+        */
         // reduce ammo
         ammo--;
     }
