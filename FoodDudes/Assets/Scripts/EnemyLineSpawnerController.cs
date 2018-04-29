@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawnerController : MonoBehaviour {
+public class EnemyLineSpawnerController : MonoBehaviour {
 
     public float triggerPosY = 4f; // y coord to trigger action
     public GameObject enemyType; // type of enemy to spawn
@@ -36,6 +36,7 @@ public class EnemySpawnerController : MonoBehaviour {
         GameObject enemy = Instantiate(enemyType, transform);
         // set enemy data
         EnemyController enemyScript = enemy.GetComponent<EnemyController>();
+        enemyScript.parentSpawner = gameObject;
         enemyScript.direction = enemyDirection;
         enemyScript.speed = enemySpeed;
         enemyScript.totalDistance = enemyDistance;

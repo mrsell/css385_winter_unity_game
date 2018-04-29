@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
 
+    public GameObject parentSpawner;
     public int healthPoints = 10; // how much health this enemy has
     public string direction = "left"; // direction to move
     public float speed = .05f; // movement speed
@@ -18,6 +19,8 @@ public class EnemyController : MonoBehaviour {
     private bool shotSet = true;
     private bool movingToPosition = true;
     private bool leaving = false;
+    private Vector2 leavingDirection; // direction to leave in
+    private bool leavingDirectionSet = false; // leaving direction has been set
 
     // components
     private BoxCollider2D boxCollider;
@@ -52,6 +55,8 @@ public class EnemyController : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log(other);
+        // hit by player bullet
         if (other.gameObject.CompareTag("PlayerBullet")) {
             healthPoints--;
             Destroy(other.gameObject);
@@ -61,6 +66,10 @@ public class EnemyController : MonoBehaviour {
                 movingToPosition = false;
                 leaving = true;
             }
+        }
+        // colliding with enemy spawner
+        else if (other.gameObject == parentSpawner && leaving) {
+            Destroy(gameObject);
         }
     }
 
@@ -99,23 +108,15 @@ public class EnemyController : MonoBehaviour {
             currentDistance += step;
         }
         else if (leaving) {
-            // set new position with double speed
-            switch (direction) {
-                case "left":
-                    transform.position = new Vector3(
-                        transform.position.x + (2 * speed),
-                        transform.position.y,
-                        transform.position.z
-                    );
-                    break;
-                case "right":
-                    transform.position = new Vector3(
-                        transform.position.x - (2 * speed),
-                        transform.position.y,
-                        transform.position.z
-                    );
-                    break;
+            // set leaving direction if not set
+            if (!leavingDirectionSet) {
+                leavingDirection = parentSpawner.transform.position -
+                    transform.position;
+                leavingDirection.Normalize();
+                leavingDirectionSet = true;
             }
+            // set new position with double speed
+            transform.position += (Vector3)(leavingDirection * speed * 2);
         }
         else {
             // update timer
