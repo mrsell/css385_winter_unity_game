@@ -13,11 +13,24 @@ public class BossSpawner : MonoBehaviour {
 	// the type of object that will represent the BOSS
 	public GameObject bossType;
 
-	// the object that the BOSS will attack
-	public GameObject player;
-
 	// once spawned, the BOSS will have this maximum speed
 	public float maxSpeed = .4f;
+
+	// when the BOSS shoots, the number of bullets fired
+	public int numberShotsBurst = 3;
+
+	// the time delay betwwen shots in a burst
+	public int millisecondsBetweenShots = 500;
+
+	// the time delay between bursts
+	public int millisecondsBetweenBursts = 3000;
+
+	// the five different objects the BOSS will shoot
+	public GameObject bossBullet1;
+	public GameObject bossBullet2;
+	public GameObject bossBullet3;
+	public GameObject bossBullet4;
+	public GameObject bossBullet5;
 
 	// was the BOSS created?
 	private bool wasSpawned = false;
@@ -43,8 +56,10 @@ public class BossSpawner : MonoBehaviour {
 
 	}
 
-	// instantiate the BOSS
-	void spawnBoss() {
+	/// <summary>
+	/// Instantiate the BOSS
+	/// </summary>
+	private void spawnBoss() {
 
 		// create an instance of the BOSS at the spawn location
 		GameObject boss = Instantiate( bossType, transform );
@@ -52,7 +67,15 @@ public class BossSpawner : MonoBehaviour {
 
 		// set BOSS parameters
 		bossController.setMaxSpeed( maxSpeed );
-		bossController.setAggressiveness (aggressiveness);
+		bossController.setAggressiveness ( aggressiveness );
+		bossController.setBossBullet1 ( bossBullet1 );
+		bossController.setBossBullet2 ( bossBullet2 );
+		bossController.setBossBullet3 ( bossBullet3 );
+		bossController.setBossBullet4 ( bossBullet4 );
+		bossController.setBossBullet5 ( bossBullet5 );
+		bossController.setNumberShotsBurst ( numberShotsBurst );
+		bossController.setMillisecondsBetweenBursts ( millisecondsBetweenBursts );
+		bossController.setMillisecondsBetweenShots ( millisecondsBetweenShots );
 
 	}
 
