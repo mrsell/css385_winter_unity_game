@@ -1078,9 +1078,10 @@ MonoBehaviour:
   enemyType: {fileID: 1552057664517576, guid: 8d0d0c1d7a2b6415b829c385d771d117, type: 2}
   numEnemiesToSpawn: 7
   spawnInterval: 0.3
-  maxDistance: 6
-  enemyDirection: right
+  maxDistance: 5
+  enemyDirection: left
   enemySpeed: 0.3
+  enemyShotSpeed: 5
   enemyPointValue: 1250
   enemyBulletType: {fileID: 1677082116462872, guid: 3a240490b712744e1b0e681ec554d02e,
     type: 2}
@@ -1840,6 +1841,7 @@ MonoBehaviour:
   maxDistance: 5
   enemyDirection: left
   enemySpeed: 0.1
+  enemyShotSpeed: 5
   enemyPointValue: 500
   enemyBulletType: {fileID: 1677082116462872, guid: 3a240490b712744e1b0e681ec554d02e,
     type: 2}
@@ -2660,9 +2662,10 @@ MonoBehaviour:
   enemyType: {fileID: 1552057664517576, guid: 8d0d0c1d7a2b6415b829c385d771d117, type: 2}
   numEnemiesToSpawn: 5
   spawnInterval: 1
-  maxDistance: 8
+  maxDistance: 5
   enemyDirection: left
   enemySpeed: 0.2
+  enemyShotSpeed: 5
   enemyPointValue: 1000
   enemyBulletType: {fileID: 1677082116462872, guid: 3a240490b712744e1b0e681ec554d02e,
     type: 2}
@@ -3660,7 +3663,7 @@ GameObject:
   - component: {fileID: 2012087059}
   - component: {fileID: 2012087058}
   m_Layer: 0
-  m_Name: enemySpawner (1)
+  m_Name: spreadShotEnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3687,21 +3690,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 2012087056}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82f5ddf4579e54ab4baa0292aed869c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ca35fd19ab0941a38dc1ad460e00826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   triggerPosY: 4
-  enemyType: {fileID: 1552057664517576, guid: 8d0d0c1d7a2b6415b829c385d771d117, type: 2}
-  numEnemiesToSpawn: 3
-  spawnInterval: 0.2
-  maxDistance: 8
+  enemyType: {fileID: 1552057664517576, guid: 6f4efe89f8429461d903b9cd226595ab, type: 2}
+  numEnemiesToSpawn: 4
+  spawnInterval: 0.5
+  maxDistance: 5
   enemyDirection: right
-  enemySpeed: 0.15
+  enemySpeed: 0.1
+  enemyShotSpeed: 5
   enemyPointValue: 750
   enemyBulletType: {fileID: 1677082116462872, guid: 3a240490b712744e1b0e681ec554d02e,
     type: 2}
-  enemyShotInterval: 0.7
-  ammo: 50
+  enemyShotInterval: 0.5
+  ammo: 30
+  enemySpread: 5
 --- !u!212 &2012087059
 SpriteRenderer:
   m_ObjectHideFlags: 0
