@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour {
     public float shotSpeed = 5.0f;
     public float totalDistance = 5f; // total distance to travel
     public int pointValue = 500; // points gained on defeat
+    public int lossValue = 200; // points lost on non-player kills
     public GameObject bulletType; // type of shot to fire
     public float shotInterval = .5f; // time between firing shots
     public int ammo = 20; // number of available shots
@@ -74,6 +75,10 @@ public class EnemyController : MonoBehaviour {
         }
         // colliding with enemy spawner
         else if (other.gameObject == parentSpawner && leaving) {
+            if(healthPoints > 0)
+            {
+                Score.score -= lossValue;
+            }
             Destroy(gameObject);
         }
     }

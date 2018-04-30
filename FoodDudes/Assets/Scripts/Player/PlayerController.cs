@@ -9,9 +9,11 @@ public class PlayerController : MonoBehaviour {
     public float speed = 5; // player movement speed
     public int healthPoints = 5; // health points
     public GameObject bulletType; // shot type
+    public GameObject homingBulletType; // shot type
     public GameObject shield; // shield
     public Image rapidFireImage;
     public Image shieldImage;
+    public Image homingFireImage;
 
     private bool rapidFireEnabled = false;
     private float rapidFireDuration = 10f;
@@ -26,13 +28,19 @@ public class PlayerController : MonoBehaviour {
     private float shieldCooldown = 20f;
     private float shieldTimer = 0f;
 
+    private bool homingBulletEnabled = false;
+    private bool homingBulletDisabledForNextShot = false;
+    private float homingEffectDuration = 10f;
+    private float homingFireDelay = 0.5f;
+    private float homingFireDelayTimer = 0f;
+    private float homingEffectTimer = 0f;
+    private float homingEffectCooldown = 20f;
+
     private string specialAbility = "Rapid Fire";
     private Image currentAbilityArt;
-    private Transform playerPos;
     private Rigidbody2D rb2d;
 
     void Start() {
-        playerPos = GetComponent<Transform>();
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -45,13 +53,41 @@ public class PlayerController : MonoBehaviour {
         // destroy player and reload scene if HP is at or below 0
         if (healthPoints <= 0) {
             Destroy(GameObject.Find("Player"));
+            Score.score = 0;
             SceneManager.LoadScene("TestScene");
         }
-        if(rapidFireEnabled)
+        if(homingBulletEnabled)
+        {
+            homingEffectTimer += Time.deltaTime;
+        }
+        if(homingBulletDisabledForNextShot)
+        {
+            homingFireDelayTimer += Time.deltaTime;
+        }
+        if(homingEffectTimer >= homingEffectDuration)
+        {
+            homingEffectTimer = 0f;
+            homingBulletEnabled = false;
+            homingBulletDisabledForNextShot = false;
+        }
+        if (rapidFireEnabled)
         {
             RapidFire();
         }
-        else
+        else if (homingBulletEnabled)
+        {
+            if (homingFireDelay >= homingFireDelayTimer)
+            {
+                homingBulletDisabledForNextShot = false;
+                NormalFire();
+                homingBulletDisabledForNextShot = true;
+            }
+            else
+            {
+                homingFireDelayTimer = 0f;
+            }
+        }
+        else if (!homingBulletEnabled)
         {
             NormalFire();
         }
@@ -73,6 +109,11 @@ public class PlayerController : MonoBehaviour {
             specialAbility = "Shield";
             currentAbilityArt = shieldImage;
         }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            specialAbility = "Homing Bullet";
+            currentAbilityArt = homingFireImage;
+        }
     }
 
     void NormalFire()
@@ -87,11 +128,20 @@ public class PlayerController : MonoBehaviour {
                 transform.position.y + spriteRenderer.bounds.extents.y,
                 transform.position.z
             );
-            GameObject bullet = Instantiate(bulletType);
+            GameObject bullet;
+            if (homingBulletEnabled)
+            {
+                shotPos.x += Random.Range(spriteRenderer.bounds.extents.x * -1, spriteRenderer.bounds.extents.x);
+                bullet = Instantiate(homingBulletType);
+            }
+            else
+            {
+                bullet = Instantiate(bulletType);
+            }
             Transform bulletTransform = bullet.GetComponent<Transform>();
-            bulletTransform.position = shotPos;
-            // set bullet velocity
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            bulletTransform.position = new Vector3(shotPos.x, shotPos.y + GetComponent<BoxCollider2D>().bounds.extents.y, shotPos.z);
+            // set bullet velocity
             rb.velocity = new Vector2(0f, 8f);
         }
     }
@@ -114,7 +164,17 @@ public class PlayerController : MonoBehaviour {
             ShieldInstantiate();
             return shieldCooldown;
         }
-        return 5f;
+        else if (specialAbility == "Homing Bullet")
+        {
+            homingBulletEnabled = true;
+            homingBulletDisabledForNextShot = false;
+            return shieldCooldown;
+        }
+        else
+        {
+            rapidFireEnabled = true;
+            return rapidFireCooldown;
+        }
     }
 
     void ShieldInstantiate()

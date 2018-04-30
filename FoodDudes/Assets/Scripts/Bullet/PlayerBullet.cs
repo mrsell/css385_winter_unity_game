@@ -7,7 +7,7 @@ public class PlayerBullet : MonoBehaviour {
 
     const float offScreenError = 0.01f;
     
-    public float speed;
+    public float speed = 5;
     public int damage = 1;
 
     private bool isAlive = true;
@@ -42,16 +42,16 @@ public class PlayerBullet : MonoBehaviour {
         if (collision.gameObject.tag == "Enemy") {
             collision.gameObject.SendMessage("DamageTaken", damage);
             isAlive = false;
-            Debug.Log("removed by dealing damage to an enemy");
         }
-        else if (collision.gameObject.tag == "Player") {
+        else if (collision.gameObject.tag == "Boss") {
             collision.gameObject.SendMessage("DamageTaken", damage);
             isAlive = false;
-            Debug.Log("removed by dealing damage to a player");
+        }
+        else if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "PlayerBullet")
+        {
         }
         else {
             isAlive = false;
-            Debug.Log("collision by a random " + collision.gameObject.tag);
         }
     }
 

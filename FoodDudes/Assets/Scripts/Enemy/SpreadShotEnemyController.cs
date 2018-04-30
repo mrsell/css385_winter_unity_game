@@ -10,7 +10,8 @@ public class SpreadShotEnemyController : MonoBehaviour {
     public float speed = .05f; // movement speed
     public float shotSpeed = 2.0f;
     public float totalDistance = 5f; // total distance to travel
-    public int pointValue = 500; // points gained on defeat
+    public int pointValue = 800; // points gained on defeat
+    public int lossValue = 300; // points lost on non-player kills
     public GameObject bulletType; // type of shot to fire
     public float shotInterval = .5f; // time between firing shots
     public int ammo = 20; // number of available shots
@@ -90,7 +91,12 @@ public class SpreadShotEnemyController : MonoBehaviour {
             }
         }
         // colliding with enemy spawner
-        else if (other.gameObject == parentSpawner && leaving) {
+        else if (other.gameObject == parentSpawner && leaving)
+        {
+            if (healthPoints > 0)
+            {
+                Score.score -= lossValue;
+            }
             Destroy(gameObject);
         }
     }
