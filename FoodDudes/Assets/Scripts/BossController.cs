@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class BossController : MonoBehaviour {
 
+	// points awarded for killing the BOSS
+	private int scoreOnKill = 1000;
+
+	// points awarded for hitting the BOSS
+	private int scoreOnHit = 10;
+
+	// current health of this BOSS
+	private int health = 25;
+
 	// maximum speed for this BOSS
 	private float maxSpeed = 1.0f;
 
@@ -106,6 +115,35 @@ public class BossController : MonoBehaviour {
 
 	}
 
+	void OnTriggerEnter2D( Collider2D other ) {
+
+		// hit by a player's bullet?
+		if (other.gameObject.CompareTag("PlayerBullet")) {
+
+			// reduce BOSS health
+			health--;
+
+			// add to players score
+			Score.score += scoreOnHit;
+
+			// remove player's bullet
+			Destroy(other.gameObject);
+
+			// if health has reached 0, BOSS is "dead"
+			if ( health <= 0 ) {
+
+				// award the player
+				Score.score += scoreOnKill;
+
+				// BOSS is gone
+				Destroy ( gameObject ); 
+			
+			}
+		
+		}
+
+	}
+
 	/// <summary>
 	/// Sets the maximum speed of the BOSS.
 	/// </summary>
@@ -188,6 +226,30 @@ public class BossController : MonoBehaviour {
 	public void setMillisecondsBetweenBursts( int delay ) {
 		millisecondsBetweenBursts = delay;
 		shotTimer = millisecondsBetweenBursts;
+	}
+
+	/// <summary>
+	/// Set BOSS health
+	/// </summary>
+	/// <param name="health">The "health" points the BOSS will begin with</param>
+	public void setHealth( int health ) {
+		this.health = health;
+	}
+
+	/// <summary>
+	/// Set the number of points awarded for killing this BOSS
+	/// </summary>
+	/// <param name="points">The award for killing this BOSS/param>
+	public void setScoreOnKill( int points ) {
+		scoreOnKill = points;
+	}
+
+	/// <summary>
+	/// Set the number of points awarded for each time the player hits this BOSS
+	/// </summary>
+	/// <param name="points">The award for hitting this BOSS/param>
+	public void setScoreOnHit( int points ) {
+		scoreOnHit = points;
 	}
 
 }

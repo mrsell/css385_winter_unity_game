@@ -258,10 +258,22 @@ public class PlayerController : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        // if hit by enemy bullet, take damage and destroy bullet
-        if (other.gameObject.CompareTag("EnemyBullet")) {
-            TakeDamage(1);
-            Destroy(other.gameObject);
-        }
-    }
+        
+		// if hit by enemy bullet, take damage and destroy bullet
+		if (other.gameObject.CompareTag ("EnemyBullet")) {
+			TakeDamage (1);
+			Destroy (other.gameObject);
+		}
+    
+		// if hit by boss bullet, check for object's hit points
+		else if (other.gameObject.CompareTag ("BossBullet")) {
+
+			BossBulletController bulletController = other.gameObject.GetComponent<BossBulletController>();
+
+			TakeDamage (bulletController.damage);
+			Destroy (other.gameObject);
+
+		}
+	
+	}
 }

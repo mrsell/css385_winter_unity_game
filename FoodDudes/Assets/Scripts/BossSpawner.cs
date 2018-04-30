@@ -32,6 +32,15 @@ public class BossSpawner : MonoBehaviour {
 	public GameObject bossBullet4;
 	public GameObject bossBullet5;
 
+	// BOSS health
+	public int health = 25;
+
+	// points awarded for hitting the BOSS
+	public int scoreOnHit = 10;
+
+	// points awarded for killing the BOSS
+	public int scoreOnKill = 1000;
+
 	// was the BOSS created?
 	private bool wasSpawned = false;
 
@@ -66,13 +75,16 @@ public class BossSpawner : MonoBehaviour {
 		BossController bossController = boss.GetComponent<BossController>();
 
 		// set BOSS parameters
+		bossController.setHealth( health );
 		bossController.setMaxSpeed( maxSpeed );
-		bossController.setAggressiveness ( aggressiveness );
+		bossController.setScoreOnHit( scoreOnHit );
+		bossController.setScoreOnKill( scoreOnKill );
 		bossController.setBossBullet1 ( bossBullet1 );
 		bossController.setBossBullet2 ( bossBullet2 );
 		bossController.setBossBullet3 ( bossBullet3 );
 		bossController.setBossBullet4 ( bossBullet4 );
 		bossController.setBossBullet5 ( bossBullet5 );
+		bossController.setAggressiveness ( aggressiveness );
 		bossController.setNumberShotsBurst ( numberShotsBurst );
 		bossController.setMillisecondsBetweenBursts ( millisecondsBetweenBursts );
 		bossController.setMillisecondsBetweenShots ( millisecondsBetweenShots );
