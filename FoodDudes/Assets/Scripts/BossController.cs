@@ -57,6 +57,10 @@ public class BossController : MonoBehaviour {
 		objectToAttack = GameObject.Find ("Player");
 		playerPosition = objectToAttack.transform;
 
+		// prevent the player from spinning on impact with BOSS
+		// this is a hack...
+		objectToAttack.GetComponent<Rigidbody2D> ().freezeRotation = true;
+
 	}
 	
 	// Update is called once per frame
@@ -134,6 +138,9 @@ public class BossController : MonoBehaviour {
 
 				// award the player
 				Score.score += scoreOnKill;
+
+				// restore player object settings
+				objectToAttack.GetComponent<Rigidbody2D> ().freezeRotation = false;
 
 				// BOSS is gone
 				Destroy ( gameObject ); 
