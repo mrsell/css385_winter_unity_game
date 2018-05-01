@@ -75,6 +75,7 @@ public class EnemyController : MonoBehaviour {
         }
         // colliding with enemy spawner
         else if (other.gameObject == parentSpawner && leaving) {
+            Debug.Log("left");
             if(healthPoints > 0)
             {
                 Score.score -= lossValue;

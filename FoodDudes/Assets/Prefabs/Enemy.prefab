@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 61294429772361842}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,11 +79,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4404f46c1069a4685bf700188e3ac5fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentSpawner: {fileID: 0}
   healthPoints: 10
   direction: left
   speed: 0.05
+  shotSpeed: 5
   totalDistance: 5
   pointValue: 500
+  lossValue: 200
   bulletType: {fileID: 1677082116462872, guid: 3a240490b712744e1b0e681ec554d02e, type: 2}
   shotInterval: 1
   ammo: 20
@@ -111,7 +114,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
