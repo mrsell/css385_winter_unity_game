@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start() {
         rb2d = GetComponent<Rigidbody2D>();
+        currentAbilityArt = rapidFireImage;
     }
 
     public int getHealth()
