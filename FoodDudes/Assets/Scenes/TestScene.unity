@@ -2866,12 +2866,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerDistance: 4
-  aggressiveness: 0.6
+  aggressiveness: 0.8
   bossType: {fileID: 1189312864356652, guid: 88a076340f16b1840b7143353ac52583, type: 2}
   maxSpeed: 2
-  numberShotsBurst: 3
-  millisecondsBetweenShots: 500
-  millisecondsBetweenBursts: 3000
+  numberShotsBurst: 5
+  millisecondsBetweenShots: 400
+  millisecondsBetweenBursts: 2000
   bossBullet1: {fileID: 1806271493690648, guid: 7d75e20f1f7b6744e93f6a9ba917bd53,
     type: 2}
   bossBullet2: {fileID: 1806271493690648, guid: ba8c2dfc0aa4c7748b73b44c315c8330,

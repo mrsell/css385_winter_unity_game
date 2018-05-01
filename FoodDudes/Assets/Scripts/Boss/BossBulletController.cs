@@ -32,7 +32,7 @@ public class BossBulletController : MonoBehaviour {
 		}
 
 		// rotate as it flies - food doesn't fly straight...
-		transform.Rotate( new Vector3( 0, 0, 45 ) * Time.deltaTime );
+		transform.Rotate( new Vector3( 0, 0, 90 ) * Time.deltaTime );
 
 	}
 
