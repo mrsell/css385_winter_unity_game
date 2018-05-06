@@ -15,7 +15,6 @@ public class PlayerTrackerBullet : MonoBehaviour
     private bool isAlive = true;
     private float lifeTimer = 0f;
     private float lifeTime = 2f;
-    private BossController bossTarget;
     private EnemyController[] enemyTarget;
     private Transform endPosition;
 
@@ -49,7 +48,6 @@ public class PlayerTrackerBullet : MonoBehaviour
     private void findTargetAndAdjustTrajectory(Rigidbody2D rb)
     {
         enemyTarget = FindObjectsOfType<EnemyController>();
-        bossTarget = FindObjectOfType<BossController>();
 
         Transform shortestTransform = null;
 
@@ -70,16 +68,6 @@ public class PlayerTrackerBullet : MonoBehaviour
                     shortestTransform = enemyTarget[i].gameObject.transform;
                 }
             }
-        }
-        if (bossTarget)
-        {
-            float bossDistance = Vector2.Distance((Vector2)this.transform.position, (Vector2)bossTarget.gameObject.transform.position);
-            if (shortestDistance > bossDistance)
-            {
-                shortestDistance = bossDistance;
-                shortestTransform = bossTarget.gameObject.transform;
-            }
-
         }
 
         if (shortestTransform != null)

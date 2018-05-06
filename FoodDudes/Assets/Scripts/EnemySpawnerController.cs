@@ -31,6 +31,9 @@ public class EnemySpawnerController : MonoBehaviour {
 
     void AssignEnemyBehavior(GameObject enemy) {
         switch (enemyBehavior) {
+            case "BossBehavior":
+                enemy.AddComponent<BossBehavior>();
+                break;
             case "EnemyLineBehavior":
                 enemy.AddComponent<EnemyLineBehavior>();
                 break;
