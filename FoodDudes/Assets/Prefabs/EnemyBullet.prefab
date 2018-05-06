@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4704411339457714}
   - component: {fileID: 212990034772520430}
   - component: {fileID: 61782973388411994}
-  - component: {fileID: 114365601092905924}
+  - component: {fileID: 114030890390568158}
   - component: {fileID: 50779752500143252}
   m_Layer: 0
   m_Name: EnemyBullet
@@ -88,7 +88,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
---- !u!114 &114365601092905924
+--- !u!114 &114030890390568158
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -96,10 +96,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1677082116462872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 274351ab2ae4c4efcb6f2dc4d428b6c5, type: 3}
+  m_Script: {fileID: 11500000, guid: c19674eecbb5440ecaee313519740d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yPosBound: -5
 --- !u!212 &212990034772520430
 SpriteRenderer:
   m_ObjectHideFlags: 1

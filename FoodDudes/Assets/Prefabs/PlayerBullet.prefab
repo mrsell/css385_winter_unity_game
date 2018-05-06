@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4670888268792616}
   - component: {fileID: 212770279030284656}
   - component: {fileID: 61211418530050404}
-  - component: {fileID: 114208922780200094}
   - component: {fileID: 50229932658718224}
+  - component: {fileID: 114910243499793978}
   m_Layer: 0
   m_Name: PlayerBullet
   m_TagString: PlayerBullet
@@ -88,7 +88,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
---- !u!114 &114208922780200094
+--- !u!114 &114910243499793978
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -96,10 +96,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1277163516207576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a69d135c59c9b4e1bbcfbca01eb2fc24, type: 3}
+  m_Script: {fileID: 11500000, guid: c19674eecbb5440ecaee313519740d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yPosBound: 5
 --- !u!212 &212770279030284656
 SpriteRenderer:
   m_ObjectHideFlags: 1
