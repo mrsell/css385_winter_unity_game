@@ -2,18 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyData : MonoBehaviour {
+public class EnemyController : MonoBehaviour {
 
     // This script holds the data used by the enemy
-    public MonoBehaviour behavior;
+    public int id;
     public GameObject start;
     public GameObject end;
-
-    void Start() {
-        behavior.Start();
-    }
-
-    void Update() {
-        behavior.Update();
-    }
+    public int numEnemies;
+    public GameObject shotPattern;
 }

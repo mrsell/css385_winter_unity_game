@@ -36,7 +36,7 @@ public class EnemyLineSpawnerController : MonoBehaviour {
     void SpawnEnemy() {
         GameObject enemy = Instantiate(enemyType, transform);
         // set enemy data
-        EnemyController enemyScript = enemy.GetComponent<EnemyController>();
+        EnemyControllerOld enemyScript = enemy.GetComponent<EnemyControllerOld>();
         enemyScript.parentSpawner = gameObject;
         enemyScript.direction = enemyDirection;
         enemyScript.speed = enemySpeed;

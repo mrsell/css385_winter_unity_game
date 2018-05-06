@@ -19,10 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4286820368827038}
-  - component: {fileID: 114658135831297294}
   - component: {fileID: 114810269507228968}
   - component: {fileID: 212369092720425814}
   - component: {fileID: 61294429772361842}
+  - component: {fileID: 114868590383301962}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -68,28 +68,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.08, y: 0.1}
   m_EdgeRadius: 0
---- !u!114 &114658135831297294
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1552057664517576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4404f46c1069a4685bf700188e3ac5fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentSpawner: {fileID: 0}
-  healthPoints: 10
-  direction: left
-  speed: 0.05
-  shotSpeed: 5
-  totalDistance: 5
-  pointValue: 500
-  lossValue: 200
-  bulletType: {fileID: 1677082116462872, guid: 3a240490b712744e1b0e681ec554d02e, type: 2}
-  shotInterval: 1
-  ammo: 20
 --- !u!114 &114810269507228968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -101,6 +79,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19674eecbb5440ecaee313519740d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114868590383301962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1552057664517576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9626fc3a932244019ab96ad02954b8a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  start: {fileID: 0}
+  end: {fileID: 0}
+  direction: 
 --- !u!212 &212369092720425814
 SpriteRenderer:
   m_ObjectHideFlags: 1

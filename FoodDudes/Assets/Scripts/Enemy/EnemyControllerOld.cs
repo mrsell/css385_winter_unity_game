@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour {
+public class EnemyControllerOld : MonoBehaviour {
 
     public GameObject parentSpawner;
     public int healthPoints = 10; // how much health this enemy has
