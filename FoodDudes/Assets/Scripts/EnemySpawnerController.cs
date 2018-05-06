@@ -8,15 +8,20 @@ public class EnemySpawnerController : MonoBehaviour {
     // Enemy type and behavior script
     public GameObject enemyType;
     public string enemyBehavior; // string is class name
+
+    // Enemy data
+    public int enemyHp = 5;
+    public int enemyPointValue = 500;
+    public int enemyLossValue = 250;
+    public float enemySpeed = .05f;
+    public GameObject enemyStart;
+    public GameObject enemyEnd;
     public GameObject enemyShotPattern;
+    public float enemyShotInterval = 1f;
+    public int enemyAmmo = 30;
 
     public int numToSpawn = 5; // number of enemies to spawn
     public float spawnInterval = .5f; // time between each enemy spawn
-
-    // Start, end, and direction for the enemies
-    // (to be passed into the EnemyBehavior script)
-    public GameObject enemyStart;
-    public GameObject enemyEnd;
 
     // activation flag to be set to allow this spawner to spawn enemies
     public bool activated = false;
@@ -42,9 +47,15 @@ public class EnemySpawnerController : MonoBehaviour {
         // assign ID number, start, and end to enemy
         EnemyController data = enemy.GetComponent<EnemyController>();
         data.id = numSpawned; // enemy ID is the current number (starts at 0)
+        data.hp = enemyHp;
+        data.pointValue = enemyPointValue;
+        data.lossValue = enemyLossValue;
+        data.speed = enemySpeed;
         data.start = enemyStart;
         data.end = enemyEnd;
         data.numEnemies = numToSpawn;
+        data.shotInterval = enemyShotInterval;
+        data.ammo = enemyAmmo;
         data.shotPattern = enemyShotPattern;
         // increment number of spawned enemies
         numSpawned++;

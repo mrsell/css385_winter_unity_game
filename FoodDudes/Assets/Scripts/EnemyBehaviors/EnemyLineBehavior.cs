@@ -4,18 +4,11 @@ using UnityEngine;
 
 public class EnemyLineBehavior : MonoBehaviour {
 
-    public int hp = 10; // how much health this enemy has
-    public int pointValue = 500; // points gained on defeat
-    public int lossValue = 200; // points lost on non-player kills
-    public float speed = .08f; // movement speed
-    public float shotInterval = .5f; // time between firing shots
-    public int ammo = 20; // number of shots available
-    public GameObject shotPattern;
-
     enum States {
         entering,
         stationary,
-        leaving
+        leaving,
+        ending
     };
 
     private States state = States.entering; // current state
@@ -38,19 +31,18 @@ public class EnemyLineBehavior : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other) {
         // hit by player bullet
         if (other.gameObject.CompareTag("PlayerBullet")) {
-            hp--;
+            data.hp--;
             Destroy(other.gameObject);
             // if health has reached 0, set to leaving state
-            if (hp <= 0) {
-                Score.score += pointValue;
+            if (data.hp <= 0) {
+                Score.score += data.pointValue;
                 state = States.leaving;
             }
         }
         // colliding with end
         else if (other.gameObject == data.end && state == States.leaving) {
-            if(hp > 0)
-            {
-                Score.score -= lossValue;
+            if (data.hp > 0) {
+                Score.score -= data.lossValue;
             }
             Destroy(gameObject);
         }
@@ -59,8 +51,7 @@ public class EnemyLineBehavior : MonoBehaviour {
     void Update() {
         // update based on current state
         switch (state) {
-            case States.entering:
-            {
+            case States.entering: {
                 // get the start, end, and current positions
                 Vector3 startPos = data.start.transform.position;
                 Vector3 endPos = data.end.transform.position;
@@ -69,11 +60,9 @@ public class EnemyLineBehavior : MonoBehaviour {
                 float interpolant = 1.0f - ((float)data.id / data.numEnemies);
                 endPos = Vector3.Lerp(startPos, endPos, interpolant);
                 Vector3 currentPos = transform.position;
-                Debug.Log("id: " + data.id);
-                Debug.Log("end pos: " + endPos);
                 // find distance to move (must be clamped if it is longer
                 // than distance between the current and end positions)
-                float step = speed;
+                float step = data.speed;
                 float remainingDistance = Vector3.Distance(currentPos, endPos);
                 if (remainingDistance < step) {
                     step = remainingDistance;
@@ -85,36 +74,47 @@ public class EnemyLineBehavior : MonoBehaviour {
                 transform.position = Vector3.Lerp(currentPos, endPos, interpolant);
                 break;
             }
-            case States.stationary:
-            {
+            case States.stationary: {
                 // spawn bullets on timer until ammo is gone
                 timer += Time.deltaTime;
-                if (timer >= shotInterval) {
+                if (timer >= data.shotInterval) {
                     timer = 0f;
-                    Instantiate(shotPattern, transform);
-                    ammo--;
+                    GameObject shotPattern = Instantiate(data.shotPattern);
+                    shotPattern.transform.position = transform.position;
+                    data.ammo--;
                 }
-                if (ammo == 0) {
+                if (data.ammo == 0) {
                     state = States.leaving;
                 }
                 break;
             }
-            case States.leaving:
-            {
-                // move towards start point at double speed
+            case States.leaving: {
+                // get the start, end, and current positions
                 Vector3 startPos = data.start.transform.position;
                 Vector3 endPos = data.end.transform.position;
+                // end position must be clamped for enemy line
+                float distance = Vector3.Distance(startPos, endPos);
+                float interpolant = 1.0f - ((float)data.id / data.numEnemies);
+                endPos = Vector3.Lerp(startPos, endPos, interpolant);
                 Vector3 currentPos = transform.position;
-                float step = speed * 2;
-                float remainingDistance = Vector3.Distance(
-                    currentPos,
-                    startPos
-                );
+                // find distance to move (must be clamped if it is longer
+                // than distance between the current and end positions)
+                float step = data.speed * 2;
+                float remainingDistance = Vector3.Distance(currentPos, startPos);
                 if (remainingDistance < step) {
                     step = remainingDistance;
+                    // change state for next update
+                    state = States.ending;
                 }
                 // update position
-                transform.position = Vector3.Lerp(endPos, startPos, step);
+                interpolant = (step / remainingDistance);
+                transform.position = Vector3.Lerp(currentPos, startPos, interpolant);
+                break;
+            }
+            case States.ending: {
+                // Destroy self
+                transform.DetachChildren();
+                Destroy(gameObject);
                 break;
             }
         }

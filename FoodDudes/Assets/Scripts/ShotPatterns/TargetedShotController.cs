@@ -5,7 +5,7 @@ using UnityEngine;
 public class TargetedShotController : MonoBehaviour {
 
     public GameObject shotType;
-    private const float speed = .5f;
+    private const float speed = 2f;
 
     void Start() {
         // create shot

@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4008300713243646}
-  - component: {fileID: 114607335624897078}
+  - component: {fileID: 114043753908746300}
   m_Layer: 0
-  m_Name: TargetedShot
+  m_Name: SpreadShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114607335624897078
+--- !u!114 &114043753908746300
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1511930576210076}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ca793e6febb246f39ef68804d61ad55, type: 3}
+  m_Script: {fileID: 11500000, guid: 05af5a58b440e4f1892fcbd395fff206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shotType: {fileID: 1677082116462872, guid: 3a240490b712744e1b0e681ec554d02e, type: 2}
