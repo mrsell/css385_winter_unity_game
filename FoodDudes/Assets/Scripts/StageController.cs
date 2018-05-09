@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class StageController : MonoBehaviour {
 
@@ -9,6 +10,7 @@ public class StageController : MonoBehaviour {
 
     // components
     private SpriteRenderer spriteRenderer;
+	private GameObject bossSpawner;
 
     private float totalScrollDistance; // total distance to move down
     private float currentScrollDistance = 0f;
@@ -18,6 +20,7 @@ public class StageController : MonoBehaviour {
 
     void InitializeComponents() {
         spriteRenderer = GetComponent<SpriteRenderer>();
+		bossSpawner = GameObject.Find ("bossSpawner");
     }
 
     void handleTimer() {
@@ -30,13 +33,23 @@ public class StageController : MonoBehaviour {
     }
 
     void Start() {
-        InitializeComponents();
-        // get height of renderer to initialize total scroll distance
-        float stageHeight = spriteRenderer.bounds.size.y;
-        // get orthographic size of camera
-        float diff = Camera.main.orthographicSize;
-        // initialize total scroll distance
-        totalScrollDistance = stageHeight - (2 * diff);
+        
+		InitializeComponents();
+ 
+		// Y location of Boss Spawner is the total scroll distance
+		totalScrollDistance = bossSpawner.transform.position.y;
+
+		// last method used to calculate scroll distance left for now
+
+		// get height of renderer to initialize total scroll distance
+       	//float stageHeight = spriteRenderer.bounds.size.y;
+
+		// get orthographic size of camera
+        //float diff = Camera.main.orthographicSize;
+        
+		// initialize total scroll distance
+        //totalScrollDistance = stageHeight - (2 * diff);
+
     }
     
     void Update() {
