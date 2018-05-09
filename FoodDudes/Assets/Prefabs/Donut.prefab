@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114030890390568158}
   - component: {fileID: 50779752500143252}
   m_Layer: 0
-  m_Name: EnemyBullet
+  m_Name: Donut
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
