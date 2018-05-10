@@ -19,7 +19,7 @@ public class StageController : MonoBehaviour {
 
     void InitializeComponents() {
         spriteRenderer = GetComponent<SpriteRenderer>();
-		bossSpawner = GameObject.Find ("BossSpawner");
+		bossSpawner = GameObject.Find ("bossSpawner");
     }
 
     void handleTimer() {

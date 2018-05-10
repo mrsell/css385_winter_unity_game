@@ -8,6 +8,7 @@ TagManager:
   - PlayerBullet
   - BossBullet
   - Enemy
+  - Vehicle
   layers:
   - Default
   - TransparentFX
