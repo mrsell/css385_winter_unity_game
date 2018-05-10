@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class EnemySpawnerController : MonoBehaviour {
 
+	// Activation for Playtesting #3 (change later)
+	const float activationYpos = 4.5f;
+	private bool wasActivated = false;
+
     // Enemy type and behavior script
     public GameObject enemyType;
     public string enemyBehavior; // string is class name
@@ -65,6 +69,12 @@ public class EnemySpawnerController : MonoBehaviour {
     }
 
     void Update() {
+		// For Playtesting #3, activate in y pos has reached
+		// trigger point (change later)
+		if (!wasActivated && transform.position.y <= activationYpos) {
+			activated = true;
+			wasActivated = true;
+		}
         if (activated) {
             // update interval timer
             timer += Time.deltaTime;
