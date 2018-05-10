@@ -39,11 +39,8 @@ public class PlayerBullet : MonoBehaviour {
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag == "Enemy") {
-            collision.gameObject.SendMessage("DamageTaken", damage);
-            isAlive = false;
-        }
-        else if (collision.gameObject.tag == "Boss") {
+        if (collision.gameObject.tag == "Enemy" ||
+            collision.gameObject.tag == "Boss") {
             collision.gameObject.SendMessage("DamageTaken", damage);
             isAlive = false;
         }
