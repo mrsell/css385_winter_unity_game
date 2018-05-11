@@ -27,7 +27,7 @@ public class PlayerTimeline : MonoBehaviour {
             setAbilityImage(pc.getAbilityArt());
             timelineImage.sprite = abilityImage.sprite;
             timer = 0f;
-            cooldown = pc.executeAbility();
+            //cooldown = pc.executeAbility();
             playerTimeline.value = 0;
         }
 	}
