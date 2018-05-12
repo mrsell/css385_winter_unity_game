@@ -48,4 +48,20 @@ public class CameraController : MonoBehaviour {
         // update position
         transform.position += movement;
     }
+
+    // public methods
+
+    public void UpdateSpeed(float factor) {
+        movement.y += factor;
+    }
+
+    public void Pause() {
+        Debug.Log("paused");
+        scrollingEnabled = false;
+    }
+
+    public void Resume() {
+        Debug.Log("resumed");
+        scrollingEnabled = true;
+    }
 }
