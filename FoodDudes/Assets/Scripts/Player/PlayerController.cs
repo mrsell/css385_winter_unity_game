@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
+        shield.transform.position = transform.position;
         // destroy player and reload scene if HP is at or below 0
         if (healthPoints <= 0) {
             Destroy(GameObject.Find("Player"));

@@ -48,3 +48,5 @@ Thumbs.db
 FoodDudes/food_dude.exe
 FoodDudes/UnityPlayer.dll
 FoodDudes/food_dude_Data/
+FoodDudes/Assets/Prefabs/Shield.prefab
+FoodDudes/Assets/Prefabs/PlayerBullet.prefab
