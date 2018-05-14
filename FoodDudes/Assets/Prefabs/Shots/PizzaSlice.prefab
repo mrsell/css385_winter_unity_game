@@ -21,11 +21,12 @@ GameObject:
   - component: {fileID: 4466996947823496}
   - component: {fileID: 212874852444640474}
   - component: {fileID: 50171975306513440}
-  - component: {fileID: 114221033463331312}
   - component: {fileID: 58783123801845326}
+  - component: {fileID: 114866685284076360}
+  - component: {fileID: 114939065138880466}
   m_Layer: 0
-  m_Name: BossBullet5
-  m_TagString: BossBullet
+  m_Name: PizzaSlice
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1806271493690648}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -77,8 +78,8 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.12
---- !u!114 &114221033463331312
+  m_Radius: 0.08
+--- !u!114 &114866685284076360
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -86,12 +87,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1806271493690648}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1343e8b4cc316c44493109f0ea97f4f7, type: 3}
+  m_Script: {fileID: 11500000, guid: c19674eecbb5440ecaee313519740d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotRange: 10
-  shotSpeed: 5
-  damage: 1
+--- !u!114 &114939065138880466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1806271493690648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d757c91b4ec7dbe46b41021716af50e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212874852444640474
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -105,6 +114,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
