@@ -9,7 +9,6 @@ public class EnemySpawnerController : MonoBehaviour {
     // Interaction with camera scrolling
     public float activationPosY = 4.5f; // y pos relative to camera to activate
     public string actionUponActivation = "Pause";
-    public float slowDownFactor = .005f; // how much to slow down the camera
 
     // Enemy type and behavior script
     public GameObject enemyType;
@@ -52,7 +51,7 @@ public class EnemySpawnerController : MonoBehaviour {
                 break;
             case "SlowDown":
                 // slow down camera
-                cameraController.UpdateSpeed(-slowDownFactor);
+                cameraController.SlowDown();
                 break;
         }
     }
@@ -65,7 +64,7 @@ public class EnemySpawnerController : MonoBehaviour {
                 break;
             case "SlowDown":
                 // return camera to normal speed
-                cameraController.UpdateSpeed(slowDownFactor);
+                cameraController.SpeedUp();
                 break;
         }
     }

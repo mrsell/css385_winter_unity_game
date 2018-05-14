@@ -8,12 +8,18 @@ public class CameraController : MonoBehaviour {
     public float moveSpeed = 0.01f; // speed of scrolling
     public Vector3 endPos; // position at which camera stops
 
+    private float normalSpeed; // speed of normal movement
+    private float slowSpeed; // speed when slowed down
+    private int numTimesSlowedDown = 0;
     private Vector3 movement; // movement vector
     private float timer = 0f;
     private bool timerEnabled = true;
     private bool scrollingEnabled = false;
 
     void Start() {
+        // initialize normal and slow speeds
+        normalSpeed = moveSpeed;
+        slowSpeed = moveSpeed / 2f;
         // initialize movement vector
         movement = new Vector3(0.0f, moveSpeed, 0.0f);
     }
@@ -51,8 +57,22 @@ public class CameraController : MonoBehaviour {
 
     // public methods
 
-    public void UpdateSpeed(float factor) {
-        movement.y += factor;
+    public void SlowDown() {
+        // slow speed if not already being slowed down
+        if (numTimesSlowedDown == 0) {
+            movement.y = slowSpeed;
+        }
+        // increment number of times slowed down
+        numTimesSlowedDown++;
+    }
+
+    public void SpeedUp() {
+        // decrement number of times slowed down
+        numTimesSlowedDown--;
+        // resume normal speed if not being slowed down
+        if (numTimesSlowedDown == 0) {
+            movement.y = normalSpeed;
+        }
     }
 
     public void Pause() {
