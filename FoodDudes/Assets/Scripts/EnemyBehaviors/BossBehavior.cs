@@ -51,7 +51,7 @@ public class BossBehavior : MonoBehaviour {
                     // reset timer
                     timer = 0f;
                     // fire shot pattern
-                    GameObject shotPattern = Instantiate(data.shotPattern);
+                    GameObject shotPattern = Instantiate(data.shotPatterns[0]);
                     shotPattern.transform.position = transform.position;
                     // increment number of shots fired
                     numShotsFired++;
@@ -68,7 +68,7 @@ public class BossBehavior : MonoBehaviour {
                     // reset timer
                     timer = 0f;
                     // fire shot pattern
-                    GameObject shotPattern = Instantiate(data.shotPattern);
+                    GameObject shotPattern = Instantiate(data.shotPatterns[0]);
                     shotPattern.transform.position = transform.position;
                     // increment number of shots fired
                     numShotsFired++;

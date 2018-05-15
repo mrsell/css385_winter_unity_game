@@ -79,7 +79,7 @@ public class EnemyLineBehavior : MonoBehaviour {
                 timer += Time.deltaTime;
                 if (timer >= data.shotInterval) {
                     timer = 0f;
-                    GameObject shotPattern = Instantiate(data.shotPattern);
+                    GameObject shotPattern = Instantiate(data.shotPatterns[0]);
                     shotPattern.transform.position = transform.position;
                     data.ammo--;
                 }
