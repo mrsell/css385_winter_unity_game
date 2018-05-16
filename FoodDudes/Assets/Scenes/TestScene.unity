@@ -12749,7 +12749,7 @@ Prefab:
     - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
         type: 2}
       propertyPath: enemyShotPatterns.Array.size
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4781692126346242, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
       propertyPath: m_LocalPosition.x
