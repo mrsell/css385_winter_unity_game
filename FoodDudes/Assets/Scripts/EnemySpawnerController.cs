@@ -28,7 +28,7 @@ public class EnemySpawnerController : MonoBehaviour {
     public int numToSpawn = 5; // number of enemies to spawn
     public float spawnInterval = .5f; // time between each enemy spawn
 
-    
+    // components
     private CameraController cameraController;
 
     public bool wasActivated = false; // activation flag
