@@ -14,6 +14,7 @@ public class EnemyLineBehavior : MonoBehaviour {
     private States state = States.entering; // current state
     private bool shootingWasActivated = false;
     private float timer = 0f; // interval timer
+    private System.Random random; // random number generator
 
     // components
     private EnemyController data;
@@ -22,6 +23,7 @@ public class EnemyLineBehavior : MonoBehaviour {
     void InitializeComponents() {
         data = GetComponent<EnemyController>();
         boxCollider = GetComponent<BoxCollider2D>();
+        random = new System.Random();
     }
 
     void Start() {
@@ -79,7 +81,10 @@ public class EnemyLineBehavior : MonoBehaviour {
                 timer += Time.deltaTime;
                 if (timer >= data.shotInterval) {
                     timer = 0f;
-                    GameObject shotPattern = Instantiate(data.shotPattern);
+                    // Instantiate random shot pattern from list
+                    int index = random.Next(data.shotPatterns.Count);
+                    GameObject shotPattern =
+                        Instantiate(data.shotPatterns[index]);
                     shotPattern.transform.position = transform.position;
                     data.ammo--;
                 }

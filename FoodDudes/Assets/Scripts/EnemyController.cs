@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour {
     public GameObject start;
     public GameObject end;
     public int numEnemies;
-    public GameObject shotPattern;
+    public List<GameObject> shotPatterns;
     public float shotInterval;
     public int ammo;
 }
