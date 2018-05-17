@@ -21,11 +21,12 @@ GameObject:
   - component: {fileID: 4466996947823496}
   - component: {fileID: 212874852444640474}
   - component: {fileID: 50171975306513440}
-  - component: {fileID: 114221033463331312}
-  - component: {fileID: 58783123801845326}
+  - component: {fileID: 114625567462860236}
+  - component: {fileID: 114421637998091952}
+  - component: {fileID: 70212925404044734}
   m_Layer: 0
-  m_Name: BossBullet2
-  m_TagString: BossBullet
+  m_Name: SubSandwich
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1806271493690648}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -63,8 +64,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &58783123801845326
-CircleCollider2D:
+--- !u!70 &70212925404044734
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -76,9 +77,9 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.12
---- !u!114 &114221033463331312
+  m_Size: {x: 0.7, y: 0.15}
+  m_Direction: 1
+--- !u!114 &114421637998091952
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -86,12 +87,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1806271493690648}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1343e8b4cc316c44493109f0ea97f4f7, type: 3}
+  m_Script: {fileID: 11500000, guid: d757c91b4ec7dbe46b41021716af50e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotRange: 10
-  shotSpeed: 5
-  damage: 1
+--- !u!114 &114625567462860236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1806271493690648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c19674eecbb5440ecaee313519740d46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212874852444640474
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -105,6 +114,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -126,7 +136,7 @@ SpriteRenderer:
   m_SortingLayerID: -1985983185
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300048, guid: 77cceb37ba40a6a4f9edc0114d595a32, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b4a76010343e049fa90ae3d794b2d431, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

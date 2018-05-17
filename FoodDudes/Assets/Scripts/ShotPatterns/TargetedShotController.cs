@@ -5,7 +5,9 @@ using UnityEngine;
 public class TargetedShotController : MonoBehaviour {
 
     public GameObject shotType;
+
     private const float speed = 2f;
+    private const float torque = 100f;
 
     void Start() {
         // create shot
@@ -19,5 +21,7 @@ public class TargetedShotController : MonoBehaviour {
 		// apply the movement
         Rigidbody2D rigidbody = shot.GetComponent<Rigidbody2D>();
         rigidbody.velocity = movement;
+        // apply torque
+        rigidbody.AddTorque(torque);
     }
 }

@@ -52,13 +52,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab56613a8c9e451496826669dc15932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activationPosY: 4.5
+  actionUponActivation: Pause
   enemyType: {fileID: 0}
-  enemyBehavior: {fileID: 0}
-  numToSpawn: 5
-  spawnInterval: 0.5
+  enemyBehavior: (
+  enemyHp: 5
+  enemyPointValue: 500
+  enemyLossValue: 250
+  enemySpeed: 0.05
   enemyStart: {fileID: 0}
   enemyEnd: {fileID: 0}
-  activated: 0
+  enemyShotPatterns: []
+  enemyShotInterval: 1
+  enemyAmmo: 30
+  numToSpawn: 5
+  spawnInterval: 0.5
+  wasActivated: 0
 --- !u!212 &212362092498881626
 SpriteRenderer:
   m_ObjectHideFlags: 1

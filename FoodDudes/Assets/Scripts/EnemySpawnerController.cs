@@ -9,7 +9,6 @@ public class EnemySpawnerController : MonoBehaviour {
     // Interaction with camera scrolling
     public float activationPosY = 4.5f; // y pos relative to camera to activate
     public string actionUponActivation = "Pause";
-    public float slowDownFactor = .005f; // how much to slow down the camera
 
     // Enemy type and behavior script
     public GameObject enemyType;
@@ -22,14 +21,14 @@ public class EnemySpawnerController : MonoBehaviour {
     public float enemySpeed = .05f;
     public GameObject enemyStart;
     public GameObject enemyEnd;
-    public GameObject enemyShotPattern;
+    public List<GameObject> enemyShotPatterns;
     public float enemyShotInterval = 1f;
     public int enemyAmmo = 30;
 
     public int numToSpawn = 5; // number of enemies to spawn
     public float spawnInterval = .5f; // time between each enemy spawn
 
-    
+    // components
     private CameraController cameraController;
 
     public bool wasActivated = false; // activation flag
@@ -52,7 +51,7 @@ public class EnemySpawnerController : MonoBehaviour {
                 break;
             case "SlowDown":
                 // slow down camera
-                cameraController.UpdateSpeed(-slowDownFactor);
+                cameraController.SlowDown();
                 break;
         }
     }
@@ -65,7 +64,7 @@ public class EnemySpawnerController : MonoBehaviour {
                 break;
             case "SlowDown":
                 // return camera to normal speed
-                cameraController.UpdateSpeed(slowDownFactor);
+                cameraController.SpeedUp();
                 break;
         }
     }
@@ -100,7 +99,7 @@ public class EnemySpawnerController : MonoBehaviour {
         data.numEnemies = numToSpawn;
         data.shotInterval = enemyShotInterval;
         data.ammo = enemyAmmo;
-        data.shotPattern = enemyShotPattern;
+        data.shotPatterns = new List<GameObject>(enemyShotPatterns);
         // add enemy reference to list
         enemies.Add(enemy);
         // increment number of spawned enemies
