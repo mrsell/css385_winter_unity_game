@@ -120,6 +120,12 @@ public class PlayerController : MonoBehaviour {
             specialAbility = "Homing Bullet";
             currentAbilityArt = homingFireImage;
         }
+
+		// pressing ESC key returns to the Main Menu
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			SceneManager.LoadScene ("MainMenu");
+		}
+
     }
 
     void NormalFire()
