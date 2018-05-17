@@ -40,8 +40,11 @@ public class PlayerController : MonoBehaviour {
     private Image currentAbilityArt;
     private Rigidbody2D rb2d;
 
+    private List<Ability> abilityActivationList;
+
     void Start() {
         rb2d = GetComponent<Rigidbody2D>();
+        abilityActivationList = new List<Ability>();
         currentAbilityArt = rapidFireImage;
     }
 
@@ -103,6 +106,7 @@ public class PlayerController : MonoBehaviour {
         }
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
+            PlayerTestTimeline.addToPlayerTimeline(10f, homingBulletType);
             specialAbility = "Rapid Fire";
             currentAbilityArt = rapidFireImage;
         }
@@ -153,29 +157,24 @@ public class PlayerController : MonoBehaviour {
         return currentAbilityArt;
     }
 
-    public float executeAbility()
+    public void executeAbility()
     {
         if(specialAbility == "Rapid Fire")
         {
-            rapidFireEnabled = true;
-            return rapidFireCooldown;
+            abilityActivationList.Add(new Ability("Rapid Fire", 10));
         }
         else if(specialAbility == "Shield")
         {
-            shieldEnabled = true;
+            abilityActivationList.Add(new Ability("Shield", 10));
             ShieldInstantiate();
-            return shieldCooldown;
         }
         else if (specialAbility == "Homing Bullet")
         {
-            homingBulletEnabled = true;
-            homingBulletDisabledForNextShot = false;
-            return shieldCooldown;
+            abilityActivationList.Add(new Ability("Homing Bullet", 10));
         }
         else
         {
-            rapidFireEnabled = true;
-            return rapidFireCooldown;
+            abilityActivationList.Add(new Ability("Rapid Fire", 10));
         }
     }
 
@@ -266,4 +265,59 @@ public class PlayerController : MonoBehaviour {
 			Destroy (other.gameObject);
 		}
 	}
+
+    private class Ability
+    {
+        private string abilityType;
+        private float duration;
+
+        public Ability(string st, float dur)
+        {
+            abilityType = st;
+            duration = dur;
+        }
+
+        public void decrement(float amount)
+        {
+            duration -= amount;
+        }
+
+        public bool isOver()
+        {
+            return duration <= 0;
+        }
+
+        public string getAbilityType()
+        {
+            return abilityType;
+        }
+    }
+
+    private class ShotDelay
+    {
+        private float delayTime;
+        private float delayTimer;
+        private bool ready;
+
+        public ShotDelay(float delayDuration)
+        {
+            delayTime = delayDuration;
+            ready = true;
+        }
+
+        public void progress(float elapsed)
+        {
+            delayTimer += elapsed;
+            if(delayTimer >= delayTime)
+            {
+                ready = true;
+            }
+        }
+
+        public void beginDelay()
+        {
+            ready = false;
+            delayTimer = 0f;
+        }
+    }
 }
