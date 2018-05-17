@@ -4056,9 +4056,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeline: {fileID: 165917472}
-  ability1: {fileID: 74807280}
   player: {fileID: 1652091239}
   UICanvas: {fileID: 1576753568}
+  currentActionImage: {fileID: 148737675}
 --- !u!1 &471500639
 GameObject:
   m_ObjectHideFlags: 0
@@ -15882,9 +15882,9 @@ MonoBehaviour:
   homingBulletType: {fileID: 1634118694838852, guid: 6d6a15724eb9454419346250ea6502dc,
     type: 2}
   shield: {fileID: 1868797190}
-  rapidFireImage: {fileID: 74807281}
-  shieldImage: {fileID: 111650910}
-  homingFireImage: {fileID: 1365378491}
+  rapidFireImage: {fileID: 74807280}
+  shieldImage: {fileID: 111650908}
+  homingFireImage: {fileID: 1365378489}
 --- !u!61 &1652091244
 BoxCollider2D:
   m_ObjectHideFlags: 0
