@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemySpawnerController : MonoBehaviour {
 
-	// Activation for Playtesting #3 (change later)
-	const float activationYpos = 4.5f;
-	private bool wasActivated = false;
+    // Interaction with camera scrolling
+    public float activationPosY = 4.5f; // y pos relative to camera to activate
+    public string actionUponActivation = "Pause";
+    public float slowDownFactor = .005f; // how much to slow down the camera
 
     // Enemy type and behavior script
     public GameObject enemyType;
@@ -27,11 +29,46 @@ public class EnemySpawnerController : MonoBehaviour {
     public int numToSpawn = 5; // number of enemies to spawn
     public float spawnInterval = .5f; // time between each enemy spawn
 
-    // activation flag to be set to allow this spawner to spawn enemies
-    public bool activated = false;
     
+    private CameraController cameraController;
+
+    public bool wasActivated = false; // activation flag
     private float timer = 0f; // interval timer
+    private List<GameObject> enemies; // set of references to enemies spawned
     private int numSpawned = 0; // how many enemies have been spawned so far
+
+    void Start() {
+        // initialize camera controller
+        cameraController = Camera.main.GetComponent<CameraController>();
+        // initialize list of enemies
+        enemies = new List<GameObject>();
+    }
+
+    void Activate() {
+        switch (actionUponActivation) {
+            case "Pause":
+                // pause camera
+                cameraController.Pause();
+                break;
+            case "SlowDown":
+                // slow down camera
+                cameraController.UpdateSpeed(-slowDownFactor);
+                break;
+        }
+    }
+
+    void Deactivate() {
+        switch (actionUponActivation) {
+            case "Pause":
+                // resume camera
+                cameraController.Resume();
+                break;
+            case "SlowDown":
+                // return camera to normal speed
+                cameraController.UpdateSpeed(slowDownFactor);
+                break;
+        }
+    }
 
     void AssignEnemyBehavior(GameObject enemy) {
         switch (enemyBehavior) {
@@ -64,29 +101,40 @@ public class EnemySpawnerController : MonoBehaviour {
         data.shotInterval = enemyShotInterval;
         data.ammo = enemyAmmo;
         data.shotPattern = enemyShotPattern;
+        // add enemy reference to list
+        enemies.Add(enemy);
         // increment number of spawned enemies
         numSpawned++;
     }
 
     void Update() {
-		// For Playtesting #3, activate in y pos has reached
-		// trigger point (change later)
-		if (!wasActivated && transform.position.y <= activationYpos) {
-			activated = true;
-			wasActivated = true;
-		}
-        if (activated) {
-            // update interval timer
-            timer += Time.deltaTime;
-            // at each defined interval, spawn an enemy
-            if (timer >= spawnInterval) {
-                SpawnEnemy();
-                timer = 0f;
-                // If all enemies have been spawned, deactivate
-                if (numSpawned == numToSpawn) {
-                    activated = false;
-                    numSpawned = 0;
+        if (!wasActivated) {
+            // check if position is within defined activation range of camera
+            float spawnerPosY = transform.position.y;
+            float cameraPosY = Camera.main.transform.position.y;
+            if (spawnerPosY - cameraPosY <= activationPosY) {
+                // activate spawner
+                wasActivated = true;
+                Activate();
+            }
+        }
+        else {
+            // if not all enemies have been spawned
+            if (numSpawned < numToSpawn) {
+                // update interval timer
+                timer += Time.deltaTime;
+                // at each defined interval, spawn an enemy
+                if (timer >= spawnInterval) {
+                    // reset timer
+                    timer = 0f;
+                    SpawnEnemy();
                 }
+            }
+            // if there is no entry in the enemy list that is not null
+            else if (!enemies.Any(enemy => enemy != null)) {
+                // deactivate and destroy self
+                Deactivate();
+                Destroy(gameObject);
             }
         }
     }
