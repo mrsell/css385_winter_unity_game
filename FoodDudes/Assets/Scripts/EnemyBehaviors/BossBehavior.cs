@@ -5,17 +5,17 @@ using UnityEngine;
 public class BossBehavior : MonoBehaviour {
 
     enum States {
-        entering,
+        moving,
         firingShot,
         waitingOnShot,
-        moving,
         leaving,
         ending
     };
 
-    private States state = States.entering; // current state
+    private States state = States.moving; // current state
     private float timer = 0f; // interval timer
     private Vector2 nextPos; // next position to move towards after firing shot
+    private int nextShotIndex; // index of shot pattern to use next
 
     private const float timerInterval = 5f;
     // circular range of movement away from center
@@ -32,8 +32,27 @@ public class BossBehavior : MonoBehaviour {
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
+    void ChooseNextDestination() {
+        nextPos = (Vector2)data.end.transform.position +
+            (Random.insideUnitCircle * radius);
+    }
+
+    void ChooseNextMove() {
+        nextShotIndex = (int)(Random.value * (data.shotPatterns.Count - 1));
+        // add shot to timeline based on enemy speed and distance to next
+        // location
+        float distanceToNextPos = Vector2.Distance(transform.position, nextPos);
+        float imageTime = distanceToNextPos / data.speed / 60f;
+        PlayerTestTimeline.addToEnemyTimeline(imageTime,
+            data.shotImages[nextShotIndex]);
+    }
+
     void Start() {
         InitializeComponents();
+        // set next pos to be end position
+        nextPos = data.end.transform.position;
+        // choose starting move and add it to timeline
+        ChooseNextMove();
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -60,15 +79,14 @@ public class BossBehavior : MonoBehaviour {
     void Update() {
         // update based on current state
         switch (state) {
-            case States.entering: {
-                // get the start, end, and current positions
-                Vector3 startPos = data.start.transform.position;
-                Vector3 endPos = data.end.transform.position;
+            case States.moving: {
+                // get the current position
                 Vector3 currentPos = transform.position;
                 // find distance to move (must be clamped if it is longer
-                // than distance between the current and end positions)
+                // than distance between the current and next positions)
                 float step = data.speed;
-                float remainingDistance = Vector3.Distance(currentPos, endPos);
+                float remainingDistance =
+                    Vector3.Distance(currentPos, nextPos);
                 if (remainingDistance < step) {
                     step = remainingDistance;
                     // change state for next update
@@ -77,14 +95,13 @@ public class BossBehavior : MonoBehaviour {
                 // update position
                 float interpolant = (step / remainingDistance);
                 transform.position =
-                    Vector3.Lerp(currentPos, endPos, interpolant);
+                    Vector3.Lerp(currentPos, nextPos, interpolant);
                 break;
             }
             case States.firingShot: {
-                // Instantiate random shot pattern from list
-                int index = (int)System.Math.Round(
-                    Random.value * (data.shotPatterns.Count - 1));
-                GameObject shotPattern = Instantiate(data.shotPatterns[index]);
+                // instantiate shot pattern
+                GameObject shotPattern =
+                    Instantiate(data.shotPatterns[nextShotIndex]);
                 shotPattern.transform.position = transform.position;
                 data.ammo--;
                 // set new state
@@ -103,30 +120,11 @@ public class BossBehavior : MonoBehaviour {
                     }
                     else {
                         state = States.moving;
-                        // set new position for enemy to move towards
-                        nextPos = (Vector2)data.end.transform.position +
-                            (Random.insideUnitCircle * radius);
+                        // choose next destination and move
+                        ChooseNextDestination();
+                        ChooseNextMove();
                     }
                 }
-                break;
-            }
-            case States.moving: {
-                // get the current position
-                Vector3 currentPos = transform.position;
-                // find distance to move (must be clamped if it is longer
-                // than distance between the current and next positions)
-                float step = data.speed;
-                float remainingDistance =
-                    Vector3.Distance(currentPos, nextPos);
-                if (remainingDistance < step) {
-                    step = remainingDistance;
-                    // change state for next update
-                    state = States.firingShot;
-                }
-                // update position
-                float interpolant = (step / remainingDistance);
-                transform.position =
-                    Vector3.Lerp(currentPos, nextPos, interpolant);
                 break;
             }
             case States.leaving: {

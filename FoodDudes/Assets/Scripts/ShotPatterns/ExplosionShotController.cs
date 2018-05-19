@@ -13,9 +13,9 @@ public class ExplosionShotController : MonoBehaviour {
 
     // min and max speed of shots
     private const float minSpeed = 2f;
-    private const float maxSpeed = 7f;
+    private const float maxSpeed = 6f;
     // number of shots to fire
-    private const int shotsToFire = 100;
+    private const int shotsToFire = 75;
 
     void Start() {
         shots = new List<GameObject>();
