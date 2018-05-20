@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222207947113128472}
   - component: {fileID: 114962395994425950}
   m_Layer: 5
-  m_Name: pizzaSpinAbility
+  m_Name: pizzaSpinImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
