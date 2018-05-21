@@ -129,6 +129,12 @@ public class PlayerController : MonoBehaviour
                 timelineAbilityAddCooldown = 20f;
             }
         }
+
+		// pressing ESC key returns to the Main Menu
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			SceneManager.LoadScene ("MainMenu");
+		}
+
     }
 
     void NormalFire()
