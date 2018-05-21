@@ -38,7 +38,8 @@ public class BossBehavior : MonoBehaviour {
     }
 
     void ChooseNextMove() {
-        nextShotIndex = (int)(Random.value * (data.shotPatterns.Count - 1));
+        nextShotIndex = 
+            (int)System.Math.Round(Random.value * (data.shotPatterns.Count - 1));
         // add shot to timeline based on enemy speed and distance to next
         // location
         float distanceToNextPos = Vector2.Distance(transform.position, nextPos);
