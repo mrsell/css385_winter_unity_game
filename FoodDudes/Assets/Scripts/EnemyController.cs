@@ -14,6 +14,8 @@ public class EnemyController : MonoBehaviour {
     public GameObject end;
     public int numEnemies;
     public List<GameObject> shotPatterns;
+    // shot pattern images to be used for timeline
+    public List<GameObject> shotImages;
     public float shotInterval;
     public int ammo;
 }

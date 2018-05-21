@@ -6,10 +6,11 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-
+    
     public float speed = 5; // player movement speed
     public int healthPoints = 5; // health points
-    public GameObject bulletType; // shot type
+    public GameObject normalBulletType; // shot type
+    public GameObject rapidBulletType; // shot type
     public GameObject homingBulletType; // shot type
     public GameObject shield; // shield
     public GameObject rapidFireImage;
@@ -18,9 +19,7 @@ public class PlayerController : MonoBehaviour
 
     private bool rapidFireEnabled = false;
     private float rapidFireDuration = 10f;
-    private float rapidFireDelay = 0.05f;
-    private float rapidFireTimer = 0f;
-    private float rapidFireDelayTimer = 0f;
+    private float rapidFireDelay = 0.025f;
     private float rapidFireCooldown = 20f;
 
     private bool shieldEnabled = false;
@@ -32,8 +31,6 @@ public class PlayerController : MonoBehaviour
     private bool homingBulletEnabled = false;
     private bool homingBulletDisabledForNextShot = false;
     private float homingEffectDuration = 10f;
-    private float homingFireDelay = 0.5f;
-    private float homingFireDelayTimer = 0f;
     private float homingEffectTimer = 0f;
     private float homingEffectCooldown = 20f;
 
@@ -45,20 +42,32 @@ public class PlayerController : MonoBehaviour
     private bool timelineAbilityAvailable = true;
 
     private List<Ability> abilityActivationList;
+    private string[] obtainedAbilities = new string[3]; 
+    private ShotDelay rapidFireShotDelay;
 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         abilityActivationList = new List<Ability>();
-    }
-
-    public int getHealth()
-    {
-        return healthPoints;
+        rapidFireShotDelay = new ShotDelay(rapidFireDelay);
+        /*for(int i = 0; i < obtainedAbilities.Length; i++)
+        {
+            obtainedAbilities[i] = "";
+        }*/
+        obtainedAbilities[0] = "Rapid Fire";
+        obtainedAbilities[1] = "Shield";
+        obtainedAbilities[2] = "Homing Bullet";
     }
 
     void Update()
     {
+        // destroy player and reload scene if HP is at or below 0
+        if (healthPoints <= 0)
+        {
+            Destroy(GameObject.Find("Player"));
+            Score.score = 0;
+            SceneManager.LoadScene("TestScene");
+        }
         if (timelineAbilityAddCooldown > 0 && timelineAbilityAvailable == false)
         {
             timelineAbilityAddCooldown -= Time.deltaTime;
@@ -73,26 +82,17 @@ public class PlayerController : MonoBehaviour
             if (abilityActivationList[i].isOver())
             {
                 disableAbility(abilityActivationList[i].getAbilityType());
-                Debug.Log(abilityActivationList.Count);
                 abilityActivationList.RemoveAt(i);
-                Debug.Log(abilityActivationList.Count);
                 i--;
             }
         }
-        // destroy player and reload scene if HP is at or below 0
-        if (healthPoints <= 0)
+        if(!rapidFireShotDelay.getReadyStatus())
         {
-            Destroy(GameObject.Find("Player"));
-            Score.score = 0;
-            SceneManager.LoadScene("TestScene");
-        }
-        if (homingBulletDisabledForNextShot)
-        {
-            homingFireDelayTimer += Time.deltaTime;
+            rapidFireShotDelay.progress(Time.deltaTime);
         }
         if (rapidFireEnabled)
         {
-            RapidFire();
+            RapidFire(rapidFireShotDelay);
         }
         else
         {
@@ -100,34 +100,15 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (timelineAbilityAvailable)
-            {
-                PlayerTestTimeline.addToPlayerTimeline(10f, rapidFireImage);
-                specialAbility = "Rapid Fire";
-                timelineAbilityAvailable = false;
-                timelineAbilityAddCooldown = 20f;
-            }
-
+            activateAbilityAndPutOnTimeline(obtainedAbilities[0], 0);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if (timelineAbilityAvailable)
-            {
-                PlayerTestTimeline.addToPlayerTimeline(10f, shieldImage);
-                specialAbility = "Shield";
-                timelineAbilityAvailable = false;
-                timelineAbilityAddCooldown = 20f;
-            }
+            activateAbilityAndPutOnTimeline(obtainedAbilities[1], 1);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (timelineAbilityAvailable)
-            {
-                PlayerTestTimeline.addToPlayerTimeline(10f, homingFireImage);
-                specialAbility = "Homing Bullet";
-                timelineAbilityAvailable = false;
-                timelineAbilityAddCooldown = 20f;
-            }
+            activateAbilityAndPutOnTimeline(obtainedAbilities[2], 2);
         }
 
 		// pressing ESC key returns to the Main Menu
@@ -135,6 +116,60 @@ public class PlayerController : MonoBehaviour
 			SceneManager.LoadScene ("MainMenu");
 		}
 
+    }
+
+    private void activateAbilityAndPutOnTimeline(string ability, int abilityPlacement)
+    {
+        if (timelineAbilityAvailable)
+        {
+            if (ability == "Rapid Fire")
+            {
+                PlayerTimeline.addToPlayerTimeline(10f, rapidFireImage);
+                specialAbility = "Rapid Fire";
+                timelineAbilityAvailable = false;
+                timelineAbilityAddCooldown = 20f;
+                //obtainedAbilities[abilityPlacement] = "Shield";
+            }
+            else if (ability == "Shield")
+            {
+                PlayerTimeline.addToPlayerTimeline(10f, shieldImage);
+                specialAbility = "Shield";
+                timelineAbilityAvailable = false;
+                timelineAbilityAddCooldown = 20f;
+                //obtainedAbilities[abilityPlacement] = "Homing Bullet";
+            }
+            else if (ability == "Homing Bullet")
+            {
+                PlayerTimeline.addToPlayerTimeline(10f, homingFireImage);
+                specialAbility = "Homing Bullet";
+                timelineAbilityAvailable = false;
+                timelineAbilityAddCooldown = 20f;
+                //obtainedAbilities[abilityPlacement] = "Rapid Fire";
+            }
+        }
+    }
+
+    public int getHealth()
+    {
+        return healthPoints;
+    }
+
+    public void addAbility(string ability)
+    {
+        int i;
+        if((i = hasFreeAbilitySlot()) != -1)
+        {
+            obtainedAbilities[i] = ability;
+        }
+    }
+
+    private int hasFreeAbilitySlot()
+    {
+        for(int i = 0; i < obtainedAbilities.Length; i++)
+        {
+            if (obtainedAbilities[i] == "") return i;
+        }
+        return -1;
     }
 
     void NormalFire()
@@ -157,7 +192,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                bullet = Instantiate(bulletType);
+                bullet = Instantiate(normalBulletType);
             }
             Transform bulletTransform = bullet.GetComponent<Transform>();
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
@@ -167,32 +202,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public Image getAbilityArt()
-    {
-        return currentAbilityArt;
-    }
-
     public void executeAbility()
     {
         if (specialAbility == "Rapid Fire")
         {
-            abilityActivationList.Add(new Ability("Rapid Fire", 10));
-            Debug.Log(abilityActivationList.Count);
+            abilityActivationList.Add(new Ability("Rapid Fire", rapidFireDuration));
             rapidFireEnabled = true;
         }
         else if (specialAbility == "Shield")
         {
-            abilityActivationList.Add(new Ability("Shield", 10));
+            abilityActivationList.Add(new Ability("Shield", shieldDuration));
             ShieldInstantiate();
         }
         else if (specialAbility == "Homing Bullet")
         {
-            abilityActivationList.Add(new Ability("Homing Bullet", 10));
+            abilityActivationList.Add(new Ability("Homing Bullet", homingEffectDuration));
             homingBulletEnabled = true;
         }
     }
 
-    public void disableAbility(string specialAbility)
+    private void disableAbility(string specialAbility)
     {
         if (specialAbility == "Rapid Fire")
         {
@@ -224,14 +253,14 @@ public class PlayerController : MonoBehaviour
         shieldSprite.enabled = false;
     }
 
-    void RapidFire()
+    void RapidFire(ShotDelay sd)
     {
         // fire shots on spacebar down
         if (Input.GetKey(KeyCode.Space))
         {
-            if (rapidFireDelayTimer >= rapidFireDelay)
+            if (sd.getReadyStatus())
             {
-                rapidFireDelayTimer = 0f;
+                sd.beginDelay();
                 // create bullet at pos relative to self
                 SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
                 Vector3 shotPos = new Vector3(
@@ -239,16 +268,12 @@ public class PlayerController : MonoBehaviour
                     transform.position.y + spriteRenderer.bounds.extents.y,
                     transform.position.z
                 );
-                GameObject bullet = Instantiate(bulletType);
+                GameObject bullet = Instantiate(rapidBulletType);
                 Transform bulletTransform = bullet.GetComponent<Transform>();
                 bulletTransform.position = shotPos;
                 // set bullet velocity
                 Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
                 rb.velocity = new Vector2(0f, 8f);
-            }
-            else
-            {
-                rapidFireDelayTimer += Time.deltaTime;
             }
         }
     }
@@ -263,7 +288,14 @@ public class PlayerController : MonoBehaviour
 
         // update velocity
         rb2d.velocity = new Vector2(moveHorizontal, moveVertical);
-        rb2d.velocity *= speed;
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        {
+            rb2d.velocity *= (speed / 2.0f);
+        }
+        else
+        {
+            rb2d.velocity *= speed;
+        }
     }
 
     void TakeDamage(int amount)
@@ -288,6 +320,11 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("EnemyBullet"))
         {
             TakeDamage(1);
+            Destroy(other.gameObject);
+        }
+        // if hit by powerup, take powerup
+        if (other.gameObject.CompareTag("PowerUp"))
+        {
             Destroy(other.gameObject);
         }
     }
@@ -338,6 +375,11 @@ public class PlayerController : MonoBehaviour
             {
                 ready = true;
             }
+        }
+
+        public bool getReadyStatus()
+        {
+            return ready;
         }
 
         public void beginDelay()

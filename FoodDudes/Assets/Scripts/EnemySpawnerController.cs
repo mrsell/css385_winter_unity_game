@@ -22,6 +22,7 @@ public class EnemySpawnerController : MonoBehaviour {
     public GameObject enemyStart;
     public GameObject enemyEnd;
     public List<GameObject> enemyShotPatterns;
+    public List<GameObject> enemyShotImages;
     public float enemyShotInterval = 1f;
     public int enemyAmmo = 30;
 
@@ -100,6 +101,7 @@ public class EnemySpawnerController : MonoBehaviour {
         data.shotInterval = enemyShotInterval;
         data.ammo = enemyAmmo;
         data.shotPatterns = new List<GameObject>(enemyShotPatterns);
+        data.shotImages = new List<GameObject>(enemyShotImages);
         // add enemy reference to list
         enemies.Add(enemy);
         // increment number of spawned enemies
