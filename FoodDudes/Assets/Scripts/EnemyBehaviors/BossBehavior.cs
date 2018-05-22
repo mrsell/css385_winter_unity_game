@@ -44,7 +44,7 @@ public class BossBehavior : MonoBehaviour {
         // location
         float distanceToNextPos = Vector2.Distance(transform.position, nextPos);
         float imageTime = distanceToNextPos / data.speed / 60f;
-        PlayerTestTimeline.addToEnemyTimeline(imageTime,
+        PlayerTimeline.addToEnemyTimeline(imageTime,
             data.shotImages[nextShotIndex]);
     }
 
