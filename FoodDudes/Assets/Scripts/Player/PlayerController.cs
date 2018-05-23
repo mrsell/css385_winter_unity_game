@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
     private float shieldCooldown = 20f;
     private float shieldTimer = 0f;
 
+    // invincibility
+    private bool invincible = false;
+
     private bool homingBulletEnabled = false;
     private bool homingBulletDisabledForNextShot = false;
     private float homingEffectDuration = 10f;
@@ -109,6 +112,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             activateAbilityAndPutOnTimeline(obtainedAbilities[2], 2);
+        }
+        // if "i" key is pressed, toggle invincibility
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            invincible = !invincible;
         }
 
 		// pressing ESC key returns to the Main Menu
@@ -308,7 +316,7 @@ public class PlayerController : MonoBehaviour
                 ShieldDisable();
             }
         }
-        else
+        else if (!invincible)
         {
             healthPoints -= amount;
         }
