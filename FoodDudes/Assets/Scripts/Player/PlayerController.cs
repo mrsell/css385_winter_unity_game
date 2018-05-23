@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     private bool rapidFireEnabled = false;
     private float rapidFireDuration = 10f;
-    private float rapidFireDelay = 0.025f;
+    private float rapidFireDelay = 0.05f;
     private float rapidFireCooldown = 20f;
 
     private bool shieldEnabled = false;
