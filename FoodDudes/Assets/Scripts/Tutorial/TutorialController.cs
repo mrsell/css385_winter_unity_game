@@ -8,16 +8,24 @@ public class TutorialController : MonoBehaviour {
 	public string tutorialText;
 
 	private GameObject tutorialCanvas;
+	private GameObject tutorialTextComponent;
 	private Text textObj;
 
 
 	void Start() {
 
 		tutorialCanvas = GameObject.Find ("TutorialCanvas");
-		textObj = GameObject.Find ("TutorialText").GetComponent<Text> ();
+		tutorialTextComponent = GameObject.Find ("TutorialText");
+
+		// only set reference when canvas is active
+		if (tutorialTextComponent != null) {
+			textObj = tutorialTextComponent.GetComponent<Text> ();
+		}
 
 		// by default the tutorial should not be displayed
-		tutorialCanvas.SetActive (false);
+		if (tutorialCanvas != null) {
+			tutorialCanvas.SetActive (false);
+		}
 
 	}
 
@@ -34,7 +42,6 @@ public class TutorialController : MonoBehaviour {
 
 				// show the tutorial components
 				tutorialCanvas.SetActive (true);
-				//tutorialCanvas.GetComponent<Renderer> ().enabled = true;
 
 			}
 
@@ -50,7 +57,6 @@ public class TutorialController : MonoBehaviour {
 
 			// only display tutorial text for the player
 			if (other.name == "Player") {
-				//tutorialCanvas.GetComponent<Renderer> ().enabled = false;
 				tutorialCanvas.SetActive (false);
 			}
 
