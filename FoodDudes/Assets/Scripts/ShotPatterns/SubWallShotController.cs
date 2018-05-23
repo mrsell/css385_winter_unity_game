@@ -8,13 +8,13 @@ public class SubWallShotController : MonoBehaviour {
     // speed of shots 
     private const float speed = 1.5f;
     // number of shots per wall
-    private const int shotsPerWall = 3;
+    private const int shotsPerWall = 4;
     // how many times to fire shots
     private const int totalNumShots = 5;
     // time interval between each shot
     private const float shotInterval = 1f;
     // distance away from enemy to create wall
-    private const float wallDistance = 4f;
+    private const float wallDistance = 8f;
 
     public GameObject shotType;
 

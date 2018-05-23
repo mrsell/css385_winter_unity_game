@@ -11,8 +11,8 @@ public class FriesSpreadShotController : MonoBehaviour {
     }
 
     // speeds of fries box and fries
-    private const float boxSpeed = 4f;
-    private const float frySpeed = 4f;
+    private const float boxSpeed = 3f;
+    private const float frySpeed = 2f;
     // number of shots to fire
     private const int numShots = 15;
     // angle at which shots spread

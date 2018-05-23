@@ -13,7 +13,7 @@ public class ExplosionShotController : MonoBehaviour {
 
     // min and max speed of shots
     private const float minSpeed = 2f;
-    private const float maxSpeed = 6f;
+    private const float maxSpeed = 5f;
     // number of shots to fire
     private const int shotsToFire = 75;
 

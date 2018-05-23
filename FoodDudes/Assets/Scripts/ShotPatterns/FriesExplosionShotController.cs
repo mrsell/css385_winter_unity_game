@@ -20,15 +20,15 @@ public class FriesExplosionShotController : MonoBehaviour {
 
     // min and max speed of fries boxes
     private const float minBoxSpeed = 2f;
-    private const float maxBoxSpeed = 6f;
+    private const float maxBoxSpeed = 5f;
     // speed of individual fries
-    private const float frySpeed = 4f;
+    private const float frySpeed = 2f;
     // number of shots to fire
     private const int shotsToFire = 50;
     // torque of fries boxes
     private const float torque = 300f;
     // chance of spawning individual fries (percent)
-    private const float friesSpawnChance = 20f;
+    private const float friesSpawnChance = 15f;
     // interval for spawning individual fries
     private const float timerInterval = .1f;
 

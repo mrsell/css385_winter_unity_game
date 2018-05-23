@@ -6,7 +6,7 @@ using UnityEngine;
 public class BurgerSpinShotController : MonoBehaviour {
 
     // speed of pizzas
-    private const float speed = 6f;
+    private const float speed = 5f;
     // number of shots per wave
     private const int shotsPerWave = 8;
     // how many times to fire shots

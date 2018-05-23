@@ -16,7 +16,7 @@ public class PizzaSpinController : MonoBehaviour {
     private bool angleOffset = false;
 
     // speed of pizzas
-    private const float speed = 6f;
+    private const float speed = 5f;
     // number of pizzas per shot
     private const int pizzasPerShot = 8;
     // how many times to fire shots

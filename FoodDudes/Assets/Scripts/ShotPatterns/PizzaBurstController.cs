@@ -19,7 +19,7 @@ public class PizzaBurstController : MonoBehaviour {
 
     // speed of shots
     private const float wholePizzaSpeed = 5f;
-    private const float pizzaSliceSpeed = 3f;
+    private const float pizzaSliceSpeed = 2f;
     // how many times to fire shots
     private const int totalNumShots = 10;
     // initial time interval for firing shots

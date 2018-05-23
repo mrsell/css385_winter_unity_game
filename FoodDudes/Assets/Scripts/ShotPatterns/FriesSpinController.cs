@@ -6,7 +6,7 @@ using UnityEngine;
 public class FriesSpinController : MonoBehaviour {
     
     // speed of fries
-    private const float speed = 6f;
+    private const float speed = 3.5f;
     // number of fries per shot
     private const int friesPerShot = 12;
     // how many times to fire shots
