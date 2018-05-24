@@ -6,11 +6,6 @@ using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour {
 
-	private GameObject foodThrownGameObj;
-	private GameObject hitsRegisteredGameObj;
-	private GameObject hitRateGameObj;
-	private GameObject winLoseGameObj;
-
 	private Text foodThrownTextObj;
 	private Text hitsRegisteredTextObj;
 	private Text hitRateTextObj;
@@ -22,15 +17,10 @@ public class GameOver : MonoBehaviour {
 	public void Start() {
 
 		// get references to components that will be updated
-		foodThrownGameObj = GameObject.Find ("FoodThrownText");
-		hitsRegisteredGameObj = GameObject.Find ("HitsText");
-		hitRateGameObj = GameObject.Find ("AccuracyText");
-		winLoseGameObj = GameObject.Find ("WinLoseText");
-		//foodThrownTextObj = foodThrownGameObj.GetComponent<Text> ();
 		foodThrownTextObj = GameObject.Find ("FoodThrownText").GetComponent<Text> ();
-		hitsRegisteredTextObj = hitsRegisteredGameObj.GetComponent<Text> ();
-		hitRateTextObj = hitRateGameObj.GetComponent<Text> ();
-		winLoseTextObj = winLoseGameObj.GetComponent<Text> ();
+		hitsRegisteredTextObj =  GameObject.Find ("HitsText").GetComponent<Text> ();
+		hitRateTextObj = GameObject.Find ("AccuracyText").GetComponent<Text> ();
+		winLoseTextObj = GameObject.Find ("WinLoseText").GetComponent<Text> ();
 		finalScoreTextObj = GameObject.Find ("FinalScoreText").GetComponent<Text> ();
 
 		// set win/lose text
