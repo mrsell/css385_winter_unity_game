@@ -15,6 +15,8 @@ public class PlayerShoot : MonoBehaviour {
     
     private List<ShotDuration> durationList;
 
+	private Stats stats = new Stats ();
+
     // Use this for initialization
     void Start () {
         durationList = new List<ShotDuration>();
@@ -36,6 +38,7 @@ public class PlayerShoot : MonoBehaviour {
                     transform.position.z
                 );
                 GameObject bullet;
+				stats.shotFired ();
                 if (homingBulletToggled)
                 {
                     //shotPos.x += Random.Range(spriteRenderer.bounds.extents.x * -1, spriteRenderer.bounds.extents.x);
@@ -56,6 +59,7 @@ public class PlayerShoot : MonoBehaviour {
                     setFanBulletTrajectory(shotPos, bullet, -45f);
                     bullet = Instantiate(bullet);
                     setFanBulletTrajectory(shotPos, bullet, 45f);
+					stats.shotFired ();		// two shots fired in this case
                 }
                 else
                 {

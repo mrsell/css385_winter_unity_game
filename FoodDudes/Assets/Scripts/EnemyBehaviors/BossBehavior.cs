@@ -27,6 +27,8 @@ public class BossBehavior : MonoBehaviour {
     private EnemyController data;
     private BoxCollider2D boxCollider;
 
+	private Stats stats = new Stats();
+
     void InitializeComponents() {
         data = GetComponent<EnemyController>();
         boxCollider = GetComponent<BoxCollider2D>();
@@ -60,6 +62,7 @@ public class BossBehavior : MonoBehaviour {
         // hit by player bullet
         if (other.gameObject.CompareTag("PlayerBullet")) {
             data.hp--;
+			stats.registerHit ();
             Destroy(other.gameObject);
             // if health has reached 0, set to leaving state
             if (data.hp <= 0) {

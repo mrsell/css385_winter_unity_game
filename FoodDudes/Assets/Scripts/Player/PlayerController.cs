@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
     private string[] obtainedAbilities = new string[3]; 
     private ShotDelay rapidFireShotDelay;
 
+	private Stats stats = new Stats();
+
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -64,12 +66,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // destroy player and reload scene if HP is at or below 0
+        // destroy player and load GameOver scene if HP is at or below 0
         if (healthPoints <= 0)
         {
             Destroy(GameObject.Find("Player"));
-            Score.score = 0;
-            SceneManager.LoadScene("TestScene");
+            //Score.score = 0;
+            SceneManager.LoadScene("GameOver");
         }
         if (timelineAbilityAddCooldown > 0 && timelineAbilityAvailable == false)
         {
@@ -185,7 +187,11 @@ public class PlayerController : MonoBehaviour
         // fire shots on spacebar down
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            // create bullet at pos relative to self
+            
+			// made a shot!
+			stats.shotFired();
+
+			// create bullet at pos relative to self
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
             Vector3 shotPos = new Vector3(
                 transform.position.x,
@@ -269,7 +275,11 @@ public class PlayerController : MonoBehaviour
             if (sd.getReadyStatus())
             {
                 sd.beginDelay();
-                // create bullet at pos relative to self
+                
+				// made a shot
+				stats.shotFired();
+
+				// create bullet at pos relative to self
                 SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
                 Vector3 shotPos = new Vector3(
                     transform.position.x,

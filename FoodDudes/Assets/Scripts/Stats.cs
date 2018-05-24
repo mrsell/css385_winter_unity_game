@@ -19,6 +19,9 @@ public class Stats : MonoBehaviour {
 		numHits = 0;
 		hasWon = false;
 
+		// reset score, too!
+		Score.score = 0;
+
 	}
 
 	// The player fired a shot

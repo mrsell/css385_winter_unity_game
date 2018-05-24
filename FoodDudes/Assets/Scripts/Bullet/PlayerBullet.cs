@@ -14,6 +14,8 @@ public class PlayerBullet : MonoBehaviour {
     private float timer = 0f;
     private float timerInterval = 1f;
 
+	private Stats stats = new Stats ();
+
     void Start() {
         Rigidbody2D rg = GetComponent<Rigidbody2D>();
         rg.velocity = transform.up * speed;
@@ -43,6 +45,10 @@ public class PlayerBullet : MonoBehaviour {
             collision.gameObject.tag == "Boss") {
             collision.gameObject.SendMessage("DamageTaken", damage);
             isAlive = false;
+
+			// register a hit
+			stats.registerHit();
+
         }
         else if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "PlayerBullet")
         {
