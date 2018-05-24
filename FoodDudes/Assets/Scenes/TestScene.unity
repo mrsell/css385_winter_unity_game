@@ -15047,7 +15047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDelay: 2
-  moveSpeed: 0.5
+  moveSpeed: 0.01
   endPos: {x: 0, y: 122, z: -10}
 --- !u!1 &1336044466 stripped
 GameObject:
