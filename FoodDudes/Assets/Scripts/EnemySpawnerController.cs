@@ -14,6 +14,9 @@ public class EnemySpawnerController : MonoBehaviour {
     public GameObject enemyType;
     public string enemyBehavior; // string is class name
 
+    // Final boss flag
+    public bool finalBoss = false;
+
     // Enemy data
     public int enemyHp = 5;
     public int enemyPointValue = 500;
@@ -37,11 +40,15 @@ public class EnemySpawnerController : MonoBehaviour {
     private List<GameObject> enemies; // set of references to enemies spawned
     private int numSpawned = 0; // how many enemies have been spawned so far
 
+    private Stats stats;
+
     void Start() {
         // initialize camera controller
         cameraController = Camera.main.GetComponent<CameraController>();
         // initialize list of enemies
         enemies = new List<GameObject>();
+        // initialize stats
+        stats = gameObject.AddComponent<Stats>();
     }
 
     void Activate() {
@@ -133,6 +140,10 @@ public class EnemySpawnerController : MonoBehaviour {
             }
             // if there is no entry in the enemy list that is not null
             else if (!enemies.Any(enemy => enemy != null)) {
+                // if this was the final boss, activate win condition
+                if (finalBoss) {
+                    stats.win();
+                }
                 // deactivate and destroy self
                 Deactivate();
                 Destroy(gameObject);
