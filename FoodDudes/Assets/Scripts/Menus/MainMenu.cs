@@ -5,7 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
 
-	Stats stats = new Stats();
+	Stats stats;
+
+    void Start() {
+        stats = gameObject.AddComponent<Stats>();
+    }
 
 	public void PlayGame() {
 

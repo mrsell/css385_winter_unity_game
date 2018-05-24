@@ -48,11 +48,12 @@ public class PlayerController : MonoBehaviour
     private string[] obtainedAbilities = new string[3]; 
     private ShotDelay rapidFireShotDelay;
 
-	private Stats stats = new Stats();
+	private Stats stats;
 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        stats = gameObject.AddComponent<Stats>();
         abilityActivationList = new List<Ability>();
         rapidFireShotDelay = new ShotDelay(rapidFireDelay);
         /*for(int i = 0; i < obtainedAbilities.Length; i++)

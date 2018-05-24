@@ -27,11 +27,12 @@ public class BossBehavior : MonoBehaviour {
     private EnemyController data;
     private BoxCollider2D boxCollider;
 
-	private Stats stats = new Stats();
+	private Stats stats;
 
     void InitializeComponents() {
         data = GetComponent<EnemyController>();
         boxCollider = GetComponent<BoxCollider2D>();
+        stats = gameObject.AddComponent<Stats>();
     }
 
     void ChooseNextDestination() {

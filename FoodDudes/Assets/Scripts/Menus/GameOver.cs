@@ -12,7 +12,7 @@ public class GameOver : MonoBehaviour {
 	private Text winLoseTextObj;
 	private Text finalScoreTextObj;
 
-	private Stats stats = new Stats();
+	private Stats stats;
 
 	public void Start() {
 
@@ -34,6 +34,8 @@ public class GameOver : MonoBehaviour {
 		// final score
 		finalScoreTextObj.text = "Final Score: " + Score.score;
 
+        // stats
+        stats = gameObject.AddComponent<Stats>();
 	}
 
 

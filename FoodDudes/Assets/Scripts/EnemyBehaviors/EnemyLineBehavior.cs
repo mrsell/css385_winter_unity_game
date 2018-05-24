@@ -20,12 +20,13 @@ public class EnemyLineBehavior : MonoBehaviour {
     private EnemyController data;
     private BoxCollider2D boxCollider;
 
-	private Stats stats = new Stats();
+	private Stats stats;
 
     void InitializeComponents() {
         data = GetComponent<EnemyController>();
         boxCollider = GetComponent<BoxCollider2D>();
         random = new System.Random();
+        stats = gameObject.AddComponent<Stats>();
     }
 
     void Start() {
