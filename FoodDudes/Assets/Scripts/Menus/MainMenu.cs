@@ -5,12 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
 
-	//private RuntimeConfiguration runtimeConfiguration;
+	Stats stats = new Stats();
 
 	public void PlayGame() {
 
 		// Tutorials should not be displayed
 		RuntimeConfiguration.displayTutorialDialogs = false;
+
+		// Reset statistics
+		stats.reset();
 
 		// loading this scene starts the game
 		SceneManager.LoadScene ("TestScene");
@@ -21,6 +24,9 @@ public class MainMenu : MonoBehaviour {
 
 		// Tutorials should be displayed
 		RuntimeConfiguration.displayTutorialDialogs = true;
+
+		// Reset statistics
+		stats.reset();
 
 		// loading this scene starts the game
 		SceneManager.LoadScene ("TestScene");
