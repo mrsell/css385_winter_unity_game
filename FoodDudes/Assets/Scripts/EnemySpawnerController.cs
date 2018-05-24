@@ -139,7 +139,10 @@ public class EnemySpawnerController : MonoBehaviour {
             // if there is no entry in the enemy list that is not null
             else if (!enemies.Any(enemy => enemy != null)) {
                 // if this was the final boss, activate win condition
+                // and end music
                 if (finalBoss) {
+                    AudioSource audio = Camera.main.GetComponent<AudioSource>();
+                    audio.Stop();
                     stats.win();
                 }
                 // deactivate and destroy self

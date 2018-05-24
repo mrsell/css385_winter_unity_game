@@ -22,6 +22,9 @@ public class CameraController : MonoBehaviour {
         slowSpeed = moveSpeed / 2f;
         // initialize movement vector
         movement = new Vector3(0.0f, moveSpeed, 0.0f);
+        // create music
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.Play();
     }
 
     void Update() {
