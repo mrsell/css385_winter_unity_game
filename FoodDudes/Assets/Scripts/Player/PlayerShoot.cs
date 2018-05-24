@@ -15,13 +15,12 @@ public class PlayerShoot : MonoBehaviour {
     
     private List<ShotDuration> durationList;
 
-	private Stats stats;
+	private Stats stats = new Stats();
 
     // Use this for initialization
     void Start () {
         durationList = new List<ShotDuration>();
-        stats = gameObject.AddComponent<Stats>();
-	}
+ 	}
 	
 	// Update is called once per frame
 	void Update ()

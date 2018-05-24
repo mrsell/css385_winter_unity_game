@@ -40,15 +40,13 @@ public class EnemySpawnerController : MonoBehaviour {
     private List<GameObject> enemies; // set of references to enemies spawned
     private int numSpawned = 0; // how many enemies have been spawned so far
 
-    private Stats stats;
+	private Stats stats = new Stats();
 
     void Start() {
         // initialize camera controller
         cameraController = Camera.main.GetComponent<CameraController>();
         // initialize list of enemies
         enemies = new List<GameObject>();
-        // initialize stats
-        stats = gameObject.AddComponent<Stats>();
     }
 
     void Activate() {

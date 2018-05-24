@@ -14,12 +14,11 @@ public class PlayerBullet : MonoBehaviour {
     private float timer = 0f;
     private float timerInterval = 1f;
 
-	private Stats stats;
+	private Stats stats = new Stats();
 
     void Start() {
         Rigidbody2D rg = GetComponent<Rigidbody2D>();
         rg.velocity = transform.up * speed;
-        stats = gameObject.AddComponent<Stats>();
     }
 
     private void Update() {

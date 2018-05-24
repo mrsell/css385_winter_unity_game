@@ -12,11 +12,11 @@ public class GameOver : MonoBehaviour {
 	private Text winLoseTextObj;
 	private Text finalScoreTextObj;
 
-	private Stats stats;
+	private Stats stats = new Stats();
 
 	public void Start() {
 
-		stats = Stats.Instance;
+		//stats = Stats.Instance;
 
 		// get references to components that will be updated
 		foodThrownTextObj = GameObject.Find ("FoodThrownText").GetComponent<Text> ();

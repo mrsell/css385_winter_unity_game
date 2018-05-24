@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Stats : MonoBehaviour {
+public class Stats {
 
 	public string winText = "You Won!";
 	public string loseText = "Lame Attempt!";
@@ -11,32 +11,6 @@ public class Stats : MonoBehaviour {
 	private static int numShotsFired = 0;
 	private static int numHits = 0;
 	private static bool hasWon = false;
-
-	// Singleton pattern implementation from SO: https://gamedev.stackexchange.com/questions/116009/in-unity-how-do-i-correctly-implement-the-singleton-pattern
-	private static Stats _instance;
-
-	// get the ONE instance of the Stats class
-	public static Stats Instance { 
-		get { return _instance; } 
-	} 
-
-	// make sure that only one instance of Stats exists
-	private void Awake() 
-	{ 
-
-		// don't allow multiple instances - destroy new ones
-		if (_instance != null && _instance != this) { 
-			Destroy(this.gameObject);
-			return;
-		}
-
-		// this is the first instance!
-		_instance = this;
-
-		// keep using this instance even on scene changes
-		DontDestroyOnLoad(this.gameObject);
-
-	} 
 
 	// Reset statistics for a new game
 	public void reset() {
