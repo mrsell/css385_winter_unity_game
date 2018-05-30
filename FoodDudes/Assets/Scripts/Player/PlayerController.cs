@@ -17,6 +17,20 @@ public class PlayerController : MonoBehaviour
     public GameObject shieldImage;
     public GameObject homingFireImage;
 
+    public AudioClip timelineInsertSound;
+    public AudioClip normalShotSound;
+    public AudioClip rapidShotSound;
+    public AudioClip homingShotSound;
+    public AudioClip shieldEffectSound;
+    public AudioClip shieldDamagedSound;
+    public AudioClip shieldBrokenSound;
+    public AudioClip effectOverSound;
+    public AudioClip playerDamagedSound;
+    public AudioClip playerLowHPSound;
+    public AudioClip gameOverSound;
+
+    private AudioSource audSource;
+
     private bool rapidFireEnabled = false;
     private float rapidFireDuration = 10f;
     private float rapidFireDelay = 0.05f;
@@ -30,6 +44,7 @@ public class PlayerController : MonoBehaviour
 
     // invincibility
     private bool invincible = false;
+    private int maxHP;
 
     private bool homingBulletEnabled = false;
     private bool homingBulletDisabledForNextShot = false;
@@ -48,12 +63,19 @@ public class PlayerController : MonoBehaviour
     private string[] obtainedAbilities = new string[3]; 
     private ShotDelay rapidFireShotDelay;
 
-	private Stats stats = new Stats();
+    private float delayUntilLoad = 1.5f;
+    private float delayUntilLoadTimer = 0f;
+    private bool deathSoundEffectPlayed = false;
+
+    private Stats stats = new Stats();
 
     void Start()
     {
+        maxHP = healthPoints;
         rb2d = GetComponent<Rigidbody2D>();
+        audSource = GetComponent<AudioSource>();
         abilityActivationList = new List<Ability>();
+        //abilityActivationList.Add(new Ability("dummy", 0f));
         rapidFireShotDelay = new ShotDelay(rapidFireDelay);
         /*for(int i = 0; i < obtainedAbilities.Length; i++)
         {
@@ -69,9 +91,20 @@ public class PlayerController : MonoBehaviour
         // destroy player and load GameOver scene if HP is at or below 0
         if (healthPoints <= 0)
         {
-            Destroy(GameObject.Find("Player"));
+            if (!deathSoundEffectPlayed)
+            {
+                audSource.PlayOneShot(gameOverSound);
+                GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
+                deathSoundEffectPlayed = true;
+            }
             //Score.score = 0;
-            SceneManager.LoadScene("GameOver");
+            delayUntilLoadTimer += Time.deltaTime;
+            if (delayUntilLoadTimer > delayUntilLoad)
+            {
+                Destroy(GameObject.Find("Player"));
+                SceneManager.LoadScene("GameOver");
+            }
+            return;
         }
         if (timelineAbilityAddCooldown > 0 && timelineAbilityAvailable == false)
         {
@@ -88,9 +121,12 @@ public class PlayerController : MonoBehaviour
             {
                 disableAbility(abilityActivationList[i].getAbilityType());
                 abilityActivationList.RemoveAt(i);
+                audSource.volume = .35f;
+                audSource.PlayOneShot(effectOverSound);
                 i--;
             }
         }
+        
         if(!rapidFireShotDelay.getReadyStatus())
         {
             rapidFireShotDelay.progress(Time.deltaTime);
@@ -132,6 +168,8 @@ public class PlayerController : MonoBehaviour
     {
         if (timelineAbilityAvailable)
         {
+            audSource.volume = .75f;
+            audSource.PlayOneShot(timelineInsertSound);
             if (ability == "Rapid Fire")
             {
                 PlayerTimeline.addToPlayerTimeline(10f, rapidFireImage);
@@ -203,10 +241,14 @@ public class PlayerController : MonoBehaviour
             {
                 shotPos.x += Random.Range(spriteRenderer.bounds.extents.x * -1, spriteRenderer.bounds.extents.x);
                 bullet = Instantiate(homingBulletType);
+                audSource.volume = 0.5f;
+                audSource.PlayOneShot(homingShotSound);
             }
             else
             {
                 bullet = Instantiate(normalBulletType);
+                audSource.volume = 0.5f;
+                audSource.PlayOneShot(normalShotSound);
             }
             Transform bulletTransform = bullet.GetComponent<Transform>();
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
@@ -254,6 +296,8 @@ public class PlayerController : MonoBehaviour
     void ShieldInstantiate()
     {
         SpriteRenderer shieldSprite = shield.GetComponent<SpriteRenderer>();
+        audSource.volume = .75f;
+        audSource.PlayOneShot(shieldEffectSound);
         shieldEnabled = true;
         shieldSprite.enabled = true;
     }
@@ -263,6 +307,8 @@ public class PlayerController : MonoBehaviour
         shieldEnabled = false;
         shieldHealth = 5;
         shieldTimer = 0f;
+        audSource.volume = .75f;
+        audSource.PlayOneShot(shieldBrokenSound);
         SpriteRenderer shieldSprite = shield.GetComponent<SpriteRenderer>();
         shieldSprite.enabled = false;
     }
@@ -287,6 +333,8 @@ public class PlayerController : MonoBehaviour
                     transform.position.z
                 );
                 GameObject bullet = Instantiate(rapidBulletType);
+                audSource.volume = 0.25f;
+                audSource.PlayOneShot(rapidShotSound);
                 Transform bulletTransform = bullet.GetComponent<Transform>();
                 bulletTransform.position = shotPos;
                 // set bullet velocity
@@ -321,6 +369,8 @@ public class PlayerController : MonoBehaviour
         if (shieldEnabled)
         {
             shieldHealth -= amount;
+            audSource.volume = .75f;
+            audSource.PlayOneShot(shieldDamagedSound);
             if (shieldHealth <= 0)
             {
                 ShieldDisable();
@@ -328,22 +378,36 @@ public class PlayerController : MonoBehaviour
         }
         else if (!invincible)
         {
+            if (healthPoints > maxHP / 3 && !deathSoundEffectPlayed)
+            {
+                audSource.volume = .75f;
+                audSource.PlayOneShot(playerDamagedSound);
+            }
+            else if (!deathSoundEffectPlayed)
+            {
+                audSource.volume = .75f + ((maxHP/3 - healthPoints)/10);
+                audSource.pitch = 1.5f - healthPoints/10f;
+                audSource.PlayOneShot(playerLowHPSound);
+            }
             healthPoints -= amount;
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // if hit by enemy bullet, take damage and destroy bullet
-        if (other.gameObject.CompareTag("EnemyBullet"))
+        if (!deathSoundEffectPlayed)
         {
-            TakeDamage(1);
-            Destroy(other.gameObject);
-        }
-        // if hit by powerup, take powerup
-        if (other.gameObject.CompareTag("PowerUp"))
-        {
-            Destroy(other.gameObject);
+            // if hit by enemy bullet, take damage and destroy bullet
+            if (other.gameObject.CompareTag("EnemyBullet"))
+            {
+                TakeDamage(1);
+                Destroy(other.gameObject);
+            }
+            // if hit by powerup, take powerup
+            if (other.gameObject.CompareTag("PowerUp"))
+            {
+                Destroy(other.gameObject);
+            }
         }
     }
 
