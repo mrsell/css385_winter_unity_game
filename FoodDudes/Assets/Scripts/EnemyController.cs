@@ -18,4 +18,9 @@ public class EnemyController : MonoBehaviour {
     public List<GameObject> shotImages;
     public float shotInterval;
     public int ammo;
+    // sound effects
+    public AudioClip shotSound;
+    public AudioClip damagedSound;
+    public AudioClip spawningSound;
+    public AudioClip leaveSound;
 }

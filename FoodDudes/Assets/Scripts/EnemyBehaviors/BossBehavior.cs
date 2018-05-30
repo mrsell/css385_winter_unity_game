@@ -26,12 +26,17 @@ public class BossBehavior : MonoBehaviour {
     // components
     private EnemyController data;
     private BoxCollider2D boxCollider;
+    private AudioSource audSource;
 
 	private Stats stats = new Stats();
 
-    void InitializeComponents() {
+    void InitializeComponents()
+    {
+        audSource = GetComponent<AudioSource>();
+        audSource.volume = 0.5f;
         data = GetComponent<EnemyController>();
         boxCollider = GetComponent<BoxCollider2D>();
+        audSource.PlayOneShot(data.spawningSound);
     }
 
     void ChooseNextDestination() {
@@ -66,8 +71,13 @@ public class BossBehavior : MonoBehaviour {
             Destroy(other.gameObject);
             // if health has reached 0, set to leaving state
             if (data.hp <= 0) {
+                audSource.PlayOneShot(data.leaveSound);
                 Score.score += data.pointValue;
                 state = States.leaving;
+            }
+            else
+            {
+                audSource.PlayOneShot(data.damagedSound);
             }
         }
         // colliding with end
@@ -75,12 +85,14 @@ public class BossBehavior : MonoBehaviour {
             // player loses points if not defeated
             if (data.hp > 0) {
                 Score.score -= data.lossValue;
+                audSource.PlayOneShot(data.leaveSound);
             }
             Destroy(gameObject);
         }
     }
 
     void Update() {
+        audSource.volume = 0.5f;
         // update based on current state
         switch (state) {
             case States.moving: {
@@ -107,6 +119,8 @@ public class BossBehavior : MonoBehaviour {
                 GameObject shotPattern =
                     Instantiate(data.shotPatterns[nextShotIndex]);
                 shotPattern.transform.position = transform.position;
+                audSource.pitch = 0.5f + nextShotIndex / data.shotPatterns.Count;
+                audSource.PlayOneShot(data.shotSound);
                 data.ammo--;
                 // set new state
                 state = States.waitingOnShot;

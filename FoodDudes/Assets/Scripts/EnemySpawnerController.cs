@@ -28,6 +28,10 @@ public class EnemySpawnerController : MonoBehaviour {
     public List<GameObject> enemyShotImages;
     public float enemyShotInterval = 1f;
     public int enemyAmmo = 30;
+    public AudioClip enemySpawnSound;
+    public AudioClip enemyDamagedSound;
+    public AudioClip enemyShotSound;
+    public AudioClip enemyLeaveSound;
 
     public int numToSpawn = 5; // number of enemies to spawn
     public float spawnInterval = .5f; // time between each enemy spawn
@@ -79,9 +83,11 @@ public class EnemySpawnerController : MonoBehaviour {
         switch (enemyBehavior) {
             case "BossBehavior":
                 enemy.AddComponent<BossBehavior>();
+                enemy.AddComponent<AudioSource>();
                 break;
             case "EnemyLineBehavior":
                 enemy.AddComponent<EnemyLineBehavior>();
+                enemy.AddComponent<AudioSource>();
                 break;
             default:
                 break;
@@ -107,6 +113,10 @@ public class EnemySpawnerController : MonoBehaviour {
         data.ammo = enemyAmmo;
         data.shotPatterns = new List<GameObject>(enemyShotPatterns);
         data.shotImages = new List<GameObject>(enemyShotImages);
+        data.leaveSound = enemyLeaveSound;
+        data.shotSound = enemyShotSound;
+        data.spawningSound = enemySpawnSound;
+        data.damagedSound = enemyDamagedSound;
         // add enemy reference to list
         enemies.Add(enemy);
         // increment number of spawned enemies

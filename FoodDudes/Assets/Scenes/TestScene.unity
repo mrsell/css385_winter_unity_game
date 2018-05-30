@@ -3470,6 +3470,26 @@ Prefab:
       value: 
       objectReference: {fileID: 1511930576210076, guid: 4b5e8068a6f4e40a68b1679995c3b37b,
         type: 2}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 78ce0cc897e801547ac4772a3b5e94a2, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1f7e0f066f79167479698bf35054fe58, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f8fd916a491d9a841ba77782afdbd85d, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5725709ca57125a46a5cc8ee2243bda0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0
@@ -4472,6 +4492,26 @@ Prefab:
       propertyPath: spawnInterval
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 829e1edbbaa76794f9866704ed0b50a5, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e01fdd8d72619f840a898b973532c05d, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c2b3867909ca79748b48aaaf29a10cb6, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 315718abcacfc4e4cab736b9e1f865a1, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0
@@ -4638,6 +4678,26 @@ Prefab:
       propertyPath: spawnInterval
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7abca0e77599c9740825a9f525f22995, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6df361f56b3b9664db6e40ef295cde36, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: fc96b60be63a09a4e8aff34eadc25e73, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7abca0e77599c9740825a9f525f22995, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0
@@ -5179,6 +5239,26 @@ Prefab:
       propertyPath: finalBoss
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8efab311b7c7fbc4e935f52b0abd9a3f, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 653844c40866c7c409ef59b68cae14fc, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: cf9a0d2d97446bc4782d488c8c0d0855, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a14dad0ee2a1cfc43852a3f941ef95e3, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0
@@ -5880,6 +5960,26 @@ Prefab:
       propertyPath: enemyShotInterval
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a47360bcab9312a4491e863e383c87be, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 60ca3cdb20af1034395fa6ae6704b80a, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4aaa7ae2f9f4e874f80a3c9a55c4e551, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1865f79eb68000b43984b1b9e89b2d16, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0
@@ -8992,6 +9092,26 @@ Prefab:
       value: 
       objectReference: {fileID: 1511930576210076, guid: 82ddbcd27c01b44ac9cadfc37319b16b,
         type: 2}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 85ff4a069f467764ca031845492801ba, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 65f90776e2dfab44eba7e5a392db656e, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7abca0e77599c9740825a9f525f22995, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 705cd41c87bcc7e4983294a4909692cf, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0
@@ -9489,6 +9609,26 @@ Prefab:
       propertyPath: spawnInterval
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 285e8bb2816564042b7022ec9252aa56, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6df361f56b3b9664db6e40ef295cde36, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e3a5cc8b25930374a85bd127ea3ffd38, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4f3934baa4ed60141bb5b29d65f140a5, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0
@@ -9903,6 +10043,26 @@ Prefab:
       value: 
       objectReference: {fileID: 1511930576210076, guid: 82ddbcd27c01b44ac9cadfc37319b16b,
         type: 2}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 24af69fbd9537c345bc36eff6854a2ac, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c95fa8a5deb9d7942ab38e8bcb68477b, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 47e332163430ed94e8a935730c4b416c, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 01e8a41f9019fec47bda7e8f246edaf2, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0
@@ -11200,6 +11360,26 @@ Prefab:
       propertyPath: enemyHp
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9950b31605b40f247bae3d9b5614d107, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7f582e22f763023438c9a8a00e227869, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 85ff4a069f467764ca031845492801ba, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 076b460bed52da14f9271d95b15fc6bf, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0
@@ -11436,6 +11616,26 @@ Prefab:
       propertyPath: enemyShotInterval
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 30fc6d97bd9267a4db5cbd362b232126, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: cc592203392023142b7056db91f45ecf, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8efab311b7c7fbc4e935f52b0abd9a3f, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 01e8a41f9019fec47bda7e8f246edaf2, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0
@@ -12565,6 +12765,26 @@ Prefab:
       value: 
       objectReference: {fileID: 1511930576210076, guid: 82ddbcd27c01b44ac9cadfc37319b16b,
         type: 2}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2555456ef38f8db41986689612cf54b8, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c2b3867909ca79748b48aaaf29a10cb6, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 30fc6d97bd9267a4db5cbd362b232126, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ed9a7a8c180ad304f9ee689446f956c4, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0
@@ -12837,6 +13057,26 @@ Prefab:
       propertyPath: activationPosY
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d35f66beeccc6914ca57283d0ed1aedd, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1f2b8e3867904464fab40f8ee521a06c, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 78ce0cc897e801547ac4772a3b5e94a2, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 3a3c7de7e0b92844a94917ffcb0f1d93, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0
@@ -13290,6 +13530,26 @@ Prefab:
       propertyPath: numToSpawn
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b660c9517c3b3784293b72399fb22e50, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 076b460bed52da14f9271d95b15fc6bf, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7f582e22f763023438c9a8a00e227869, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f0328f5d7108b9e43827b097110952e6, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0
@@ -13687,6 +13947,26 @@ Prefab:
       value: 
       objectReference: {fileID: 1511930576210076, guid: 4b5e8068a6f4e40a68b1679995c3b37b,
         type: 2}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e3a5cc8b25930374a85bd127ea3ffd38, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7f582e22f763023438c9a8a00e227869, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a47360bcab9312a4491e863e383c87be, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b660c9517c3b3784293b72399fb22e50, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0
@@ -14485,6 +14765,26 @@ Prefab:
       value: 
       objectReference: {fileID: 1313369682193402, guid: 798ea9d18aa1f4db7a6b20fce4dc5bef,
         type: 2}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: cf9a0d2d97446bc4782d488c8c0d0855, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 653844c40866c7c409ef59b68cae14fc, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f0328f5d7108b9e43827b097110952e6, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a14dad0ee2a1cfc43852a3f941ef95e3, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0
@@ -15014,6 +15314,26 @@ Prefab:
       propertyPath: numToSpawn
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e151e21191c41b1409c104bafa0b548c, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 33fe1fc7c5345c14fad97b0b09a073b0, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f395ae3227e6c0045aa3c75913561257, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e13c32ccd193a104392ea04206b05898, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0
@@ -15525,6 +15845,26 @@ Prefab:
       propertyPath: finalBoss
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 33fe1fc7c5345c14fad97b0b09a073b0, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 78ce0cc897e801547ac4772a3b5e94a2, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6e983a2d8b1ea70458267e2d69847728, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f395ae3227e6c0045aa3c75913561257, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0
@@ -21112,6 +21452,26 @@ Prefab:
       propertyPath: enemySpeed
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ba2076cb79a745a449fb31944cf36622, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b8fbce8e17430194398fa9194992f059, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a14dad0ee2a1cfc43852a3f941ef95e3, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 653844c40866c7c409ef59b68cae14fc, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0
@@ -21262,6 +21622,26 @@ Prefab:
       value: 
       objectReference: {fileID: 1511930576210076, guid: 82ddbcd27c01b44ac9cadfc37319b16b,
         type: 2}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: fc96b60be63a09a4e8aff34eadc25e73, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 17e525927a29a2642b33674025cfbb30, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f395ae3227e6c0045aa3c75913561257, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 59e60277e67fa6c4984714aaacd5c448, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0
@@ -23407,6 +23787,26 @@ Prefab:
       propertyPath: numToSpawn
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2555456ef38f8db41986689612cf54b8, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5b3ac6a3c57ff1341ba73eb7c9a0eb66, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 285e8bb2816564042b7022ec9252aa56, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5725709ca57125a46a5cc8ee2243bda0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0
@@ -24012,6 +24412,26 @@ Prefab:
       value: 
       objectReference: {fileID: 1511930576210076, guid: 4b5e8068a6f4e40a68b1679995c3b37b,
         type: 2}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a80383e9fbadb14aaa0439a9a77ba13, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 653844c40866c7c409ef59b68cae14fc, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f0328f5d7108b9e43827b097110952e6, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ed9a7a8c180ad304f9ee689446f956c4, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0
@@ -24707,6 +25127,26 @@ Prefab:
       propertyPath: numToSpawn
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyLeaveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 963e8371e7ab07e4392657af469186cc, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemySpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: de1517ad922c8d74685448900e30624b, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ba2076cb79a745a449fb31944cf36622, type: 3}
+    - target: {fileID: 114154711980026518, guid: bf06b0432f4834393ab6f7d1c4f7a633,
+        type: 2}
+      propertyPath: enemyDamagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6df361f56b3b9664db6e40ef295cde36, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf06b0432f4834393ab6f7d1c4f7a633, type: 2}
   m_IsPrefabParent: 0

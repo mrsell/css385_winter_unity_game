@@ -15,6 +15,7 @@ public class EnemyLineBehavior : MonoBehaviour {
     private bool shootingWasActivated = false;
     private float timer = 0f; // interval timer
     private System.Random random; // random number generator
+    private AudioSource audSource; // used to playback audio
 
     // components
     private EnemyController data;
@@ -23,9 +24,12 @@ public class EnemyLineBehavior : MonoBehaviour {
 	private Stats stats = new Stats();
 
     void InitializeComponents() {
+        audSource = GetComponent<AudioSource>();
+        audSource.volume = 0.5f;
         data = GetComponent<EnemyController>();
         boxCollider = GetComponent<BoxCollider2D>();
         random = new System.Random();
+        audSource.PlayOneShot(data.spawningSound);
     }
 
     void Start() {
@@ -40,13 +44,19 @@ public class EnemyLineBehavior : MonoBehaviour {
             Destroy(other.gameObject);
             // if health has reached 0, set to leaving state
             if (data.hp <= 0) {
+                audSource.PlayOneShot(data.leaveSound);
                 Score.score += data.pointValue;
                 state = States.leaving;
+            }
+            else
+            {
+                audSource.PlayOneShot(data.damagedSound);
             }
         }
         // colliding with end
         else if (other.gameObject == data.end && state == States.leaving) {
             if (data.hp > 0) {
+                audSource.PlayOneShot(data.leaveSound);
                 Score.score -= data.lossValue;
             }
             Destroy(gameObject);
@@ -90,6 +100,7 @@ public class EnemyLineBehavior : MonoBehaviour {
                         Instantiate(data.shotPatterns[index]);
                     shotPattern.transform.position = transform.position;
                     data.ammo--;
+                    audSource.PlayOneShot(data.shotSound);
                 }
                 if (data.ammo == 0) {
                     state = States.leaving;
