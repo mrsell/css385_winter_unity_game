@@ -19647,6 +19647,7 @@ GameObject:
   - component: {fileID: 1652091242}
   - component: {fileID: 1652091244}
   - component: {fileID: 1652091245}
+  - component: {fileID: 1652091243}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -19732,6 +19733,86 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!82 &1652091243
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1652091239}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!61 &1652091244
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19780,6 +19861,17 @@ MonoBehaviour:
   rapidFireImage: {fileID: 790293780}
   shieldImage: {fileID: 1336044466}
   homingFireImage: {fileID: 712291987}
+  timelineInsertSound: {fileID: 8300000, guid: 29b1b10c9f83ee7468013e664e45e02c, type: 3}
+  normalShotSound: {fileID: 8300000, guid: bcead571877b42f4e8264871d6dfe75c, type: 3}
+  rapidShotSound: {fileID: 8300000, guid: a8e14b5b66c4e2545ac98d0e50a3da84, type: 3}
+  homingShotSound: {fileID: 8300000, guid: 118c9e253a813bd499390844e8e32c01, type: 3}
+  shieldEffectSound: {fileID: 8300000, guid: f68649809b848d644bd8ceee34864569, type: 3}
+  shieldDamagedSound: {fileID: 8300000, guid: b7c6cb36915537c4a83fc23e475f4cd3, type: 3}
+  shieldBrokenSound: {fileID: 8300000, guid: 3c624459c43e6c747aec75daa5bd2b04, type: 3}
+  effectOverSound: {fileID: 8300000, guid: 8e6a4276763c3f24b91facb5783fe925, type: 3}
+  playerDamagedSound: {fileID: 8300000, guid: 9ed297004cd2d0c4fab4e214c6277ecf, type: 3}
+  playerLowHPSound: {fileID: 8300000, guid: 1affdeb700c3c1645b8234eee1c921bd, type: 3}
+  gameOverSound: {fileID: 8300000, guid: b6359056d8e5b2f4e95085a17e557b4d, type: 3}
 --- !u!1 &1662011544
 GameObject:
   m_ObjectHideFlags: 0
