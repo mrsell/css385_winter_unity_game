@@ -55,10 +55,7 @@ public class EnemyLineBehavior : MonoBehaviour {
         }
         // colliding with end
         else if (other.gameObject == data.end && state == States.leaving) {
-            if (data.hp > 0) {
-                audSource.PlayOneShot(data.leaveSound);
-                Score.score -= data.lossValue;
-            }
+            audSource.PlayOneShot(data.leaveSound);
             Destroy(gameObject);
         }
     }

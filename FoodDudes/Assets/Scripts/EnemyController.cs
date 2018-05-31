@@ -8,7 +8,6 @@ public class EnemyController : MonoBehaviour {
     public int id;
     public int hp;
     public int pointValue;
-    public int lossValue;
     public float speed;
     public GameObject start;
     public GameObject end;

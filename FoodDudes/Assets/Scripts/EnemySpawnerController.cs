@@ -20,7 +20,6 @@ public class EnemySpawnerController : MonoBehaviour {
     // Enemy data
     public int enemyHp = 5;
     public int enemyPointValue = 500;
-    public int enemyLossValue = 250;
     public float enemySpeed = .05f;
     public GameObject enemyStart;
     public GameObject enemyEnd;
@@ -104,7 +103,6 @@ public class EnemySpawnerController : MonoBehaviour {
         data.id = numSpawned; // enemy ID is the current number (starts at 0)
         data.hp = enemyHp;
         data.pointValue = enemyPointValue;
-        data.lossValue = enemyLossValue;
         data.speed = enemySpeed;
         data.start = enemyStart;
         data.end = enemyEnd;

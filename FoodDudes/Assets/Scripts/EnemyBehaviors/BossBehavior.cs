@@ -82,11 +82,7 @@ public class BossBehavior : MonoBehaviour {
         }
         // colliding with end
         else if (other.gameObject == data.end && state == States.leaving) {
-            // player loses points if not defeated
-            if (data.hp > 0) {
-                Score.score -= data.lossValue;
-                audSource.PlayOneShot(data.leaveSound);
-            }
+            audSource.PlayOneShot(data.leaveSound);
             Destroy(gameObject);
         }
     }
