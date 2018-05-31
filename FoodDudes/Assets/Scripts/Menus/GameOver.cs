@@ -16,8 +16,6 @@ public class GameOver : MonoBehaviour {
 
 	public void Start() {
 
-		//stats = Stats.Instance;
-
 		// get references to components that will be updated
 		foodThrownTextObj = GameObject.Find ("FoodThrownText").GetComponent<Text> ();
 		hitsRegisteredTextObj =  GameObject.Find ("HitsText").GetComponent<Text> ();
@@ -35,9 +33,6 @@ public class GameOver : MonoBehaviour {
 
 		// final score
 		finalScoreTextObj.text = "Final Score: " + Score.score;
-
-        // stats
-	    //stats = gameObject.AddComponent<Stats>();
 
 	}
 

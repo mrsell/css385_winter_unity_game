@@ -6,7 +6,13 @@ using UnityEngine.SceneManagement;
 public class Stats {
 
 	public string winText = "You Won!";
-	public string loseText = "Lame Attempt!";
+
+	public string lostReallyBadText = "Anybody Home?";
+	public string lostPrettyBadText = "Keep Practicing!";
+	public string lostBadText = "Better Luck Next Time!";
+	public string lostDecentGameText = "Good Attempt!";
+	public string lostGoodTryText = "Nice Try!";
+	public int goodTryScore = 20000;
 
 	private static int numShotsFired = 0;
 	private static int numHits = 0;
@@ -67,11 +73,19 @@ public class Stats {
 	// Get win/lose text
 	public string getEndText() {
 
+		// the player won the game!
 		if (hasWon) {
 			return winText;
 		}
 
-		return loseText;
+		// based on what a "good try score" is, return the appropriate insult
+		if ( Score.score > goodTryScore ) return lostGoodTryText;
+		if ( Score.score > ( goodTryScore * .75 ) ) return lostDecentGameText;
+		if ( Score.score > ( goodTryScore * .50 ) ) return lostBadText;	
+		if ( Score.score > ( goodTryScore * .25 ) ) return lostPrettyBadText;	
+
+		// was anyone playing?
+		return lostReallyBadText;
 
 	}
 
