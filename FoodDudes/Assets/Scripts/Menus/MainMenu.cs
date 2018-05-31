@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour {
 		stats.reset();
 
 		// loading this scene starts the game
-		SceneManager.LoadScene ("TestScene");
+		SceneManager.LoadScene("MainScene");
 
 	}
 
@@ -29,14 +29,14 @@ public class MainMenu : MonoBehaviour {
 		stats.reset();
 
 		// loading this scene starts the game
-		SceneManager.LoadScene ("TestScene");
+		SceneManager.LoadScene("MainScene");
 
 	}
 
 	public void QuitGame() {
 
 		// end the game
-		Application.Quit ();
+		Application.Quit();
 
 	}
 
