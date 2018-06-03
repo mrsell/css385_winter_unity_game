@@ -6971,7 +6971,7 @@ Prefab:
     - target: {fileID: 114226087107789608, guid: a0b8df6eadcebe4499ca0df9f7ecb712,
         type: 2}
       propertyPath: tutorialText
-      value: Rapid fire knocks down an entire line of enemies!
+      value: Rabbit Fire knocks down an entire line of enemies!
       objectReference: {fileID: 0}
     - target: {fileID: 224977428604085206, guid: a0b8df6eadcebe4499ca0df9f7ecb712,
         type: 2}
