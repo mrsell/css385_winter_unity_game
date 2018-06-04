@@ -19,13 +19,14 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4286820368827038}
-  - component: {fileID: 114658135831297294}
   - component: {fileID: 114810269507228968}
   - component: {fileID: 212369092720425814}
   - component: {fileID: 61294429772361842}
+  - component: {fileID: 114868590383301962}
+  - component: {fileID: 50596135214682502}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,6 +44,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50596135214682502
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1552057664517576}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 2
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61294429772361842
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -68,25 +89,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.08, y: 0.1}
   m_EdgeRadius: 0
---- !u!114 &114658135831297294
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1552057664517576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4404f46c1069a4685bf700188e3ac5fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoints: 10
-  direction: left
-  speed: 0.05
-  totalDistance: 5
-  pointValue: 500
-  bulletType: {fileID: 1677082116462872, guid: 3a240490b712744e1b0e681ec554d02e, type: 2}
-  shotInterval: 1
-  ammo: 20
 --- !u!114 &114810269507228968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -98,6 +100,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19674eecbb5440ecaee313519740d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114868590383301962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1552057664517576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9626fc3a932244019ab96ad02954b8a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  hp: 0
+  pointValue: 0
+  lossValue: 0
+  speed: 0
+  start: {fileID: 0}
+  end: {fileID: 0}
+  numEnemies: 0
+  shotPattern: {fileID: 0}
+  shotInterval: 0
+  ammo: 0
 --- !u!212 &212369092720425814
 SpriteRenderer:
   m_ObjectHideFlags: 1

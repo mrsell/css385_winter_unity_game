@@ -15,10 +15,7 @@ public class PlayerTrackerBullet : MonoBehaviour
     private bool isAlive = true;
     private float lifeTimer = 0f;
     private float lifeTime = 2f;
-    private BossController bossTarget;
     private EnemyController[] enemyTarget;
-    private SpinShotEnemyController[] enemyTarget2;
-    private SpreadShotEnemyController[] enemyTarget3;
     private Transform endPosition;
 
     void Start()
@@ -51,9 +48,6 @@ public class PlayerTrackerBullet : MonoBehaviour
     private void findTargetAndAdjustTrajectory(Rigidbody2D rb)
     {
         enemyTarget = FindObjectsOfType<EnemyController>();
-        enemyTarget2 = FindObjectsOfType<SpinShotEnemyController>();
-        enemyTarget3 = FindObjectsOfType<SpreadShotEnemyController>();
-        bossTarget = FindObjectOfType<BossController>();
 
         Transform shortestTransform = null;
 
@@ -74,48 +68,6 @@ public class PlayerTrackerBullet : MonoBehaviour
                     shortestTransform = enemyTarget[i].gameObject.transform;
                 }
             }
-        }
-        if (enemyTarget2.Length > 0)
-        {
-            for (int i = 0; i < enemyTarget2.Length; i++)
-            {
-                float distanceToTest = 100000f;
-                if (enemyTarget2[i])
-                {
-                    distanceToTest = Vector2.Distance((Vector2)this.transform.position, (Vector2)enemyTarget2[i].gameObject.transform.position);
-                }
-                if (shortestDistance > distanceToTest)
-                {
-                    shortestDistance = distanceToTest;
-                    shortestTransform = enemyTarget2[i].gameObject.transform;
-                }
-            }
-        }
-        if (enemyTarget3.Length > 0)
-        {
-            for (int i = 0; i < enemyTarget3.Length; i++)
-            {
-                float distanceToTest = 100000f;
-                if (enemyTarget3[i])
-                {
-                    distanceToTest = Vector2.Distance((Vector2)this.transform.position, (Vector2)enemyTarget3[i].gameObject.transform.position);
-                }
-                if (shortestDistance > distanceToTest)
-                {
-                    shortestDistance = distanceToTest;
-                    shortestTransform = enemyTarget3[i].gameObject.transform;
-                }
-            }
-        }
-        if (bossTarget)
-        {
-            float bossDistance = Vector2.Distance((Vector2)this.transform.position, (Vector2)bossTarget.gameObject.transform.position);
-            if (shortestDistance > bossDistance)
-            {
-                shortestDistance = bossDistance;
-                shortestTransform = bossTarget.gameObject.transform;
-            }
-
         }
 
         if (shortestTransform != null)

@@ -14,6 +14,8 @@ public class PlayerBullet : MonoBehaviour {
     private float timer = 0f;
     private float timerInterval = 1f;
 
+	private Stats stats = new Stats();
+
     void Start() {
         Rigidbody2D rg = GetComponent<Rigidbody2D>();
         rg.velocity = transform.up * speed;
@@ -39,13 +41,14 @@ public class PlayerBullet : MonoBehaviour {
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag == "Enemy") {
+        if (collision.gameObject.tag == "Enemy" ||
+            collision.gameObject.tag == "Boss") {
             collision.gameObject.SendMessage("DamageTaken", damage);
             isAlive = false;
-        }
-        else if (collision.gameObject.tag == "Boss") {
-            collision.gameObject.SendMessage("DamageTaken", damage);
-            isAlive = false;
+
+			// register a hit
+			stats.registerHit();
+
         }
         else if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "PlayerBullet")
         {
